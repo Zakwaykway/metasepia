@@ -1,0 +1,50 @@
+units:
+  # Proxy Spacing Variables
+  kx: u
+  ky: u
+  # Padding Variables
+  px: kx + 2
+  py: ky + 2
+
+points:
+  zones:
+    main:
+      key:
+        padding: 1ky
+        spread: 1kx
+      rows:
+        bottom:
+        home:
+        top:
+      columns:
+        pinky:
+          rows.top.skip: true
+        ring:
+          key.spread: kx+2.
+          key.splay: -5
+          key.stagger: 10.5
+        middle:
+          key.spread: kx+2
+          key.splay: -5
+          key.stagger: 3.5
+        index:
+          key.stagger: -6
+        far:
+          rows.bottom.skip: true
+          key.stagger: -8
+    thumb:
+      key:
+        padding: 1ky
+        spread: 1kx
+      anchor:
+        ref: main_index_bottom
+        shift: [13,-35]
+        rotate: -8
+      columns:
+       inner:
+       outer:
+        key.stagger: -5
+  rotate: -20
+  mirror: &mirror
+   ref: main_far_top
+   distance: 47
