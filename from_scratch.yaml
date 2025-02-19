@@ -5,46 +5,187 @@ units:
   # Padding Variables
   px: kx + 2
   py: ky + 2
+  capx: 18
+  capy: 18
+  pinky_splay: 5
+  pinky_adj: 1.05kx
+  pinky_stagger: 0.55ky
+  ring_splay: 5
+  ring_adj: 1.05kx
+  ring_stagger: 0.19ky
+  middle_stagger: -0.32ky
+  index_stagger: 0.42ky
+  thumb_shiftx: 0.97kx
+  thumb_shifty: -1.7ky
+  thumb_stagger: -7
+  angle: 30
+  xiao_x: 17.8
+  xiao_y: 21
+  sf: 16
 
 points:
-  zones:
-    main:
-      key:
-        padding: 1ky
-        spread: 1kx
-      rows:
-        bottom:
-        home:
-        top:
-      columns:
-        pinky:
-          rows.top.skip: true
-        ring:
-          key.spread: kx+2.
-          key.splay: -5
-          key.stagger: 10.5
-        middle:
-          key.spread: kx+2
-          key.splay: -5
-          key.stagger: 3.5
-        index:
-          key.stagger: -6
-        far:
-          rows.bottom.skip: true
-          key.stagger: -8
-    thumb:
-      key:
-        padding: 1ky
-        spread: 1kx
-      anchor:
-        ref: main_index_bottom
-        shift: [13,-35]
-        rotate: -8
-      columns:
-       inner:
-       outer:
-        key.stagger: -5
-  rotate: -20
+  zones.matrix:
+    anchor.shift: [100, -100]
+    rotate: -angle + pinky_splay + ring_splay
+    mirror:
+      ref: matrix_far_top
+      shift: [0.5sf, 0.5sf]
+      distance: 13
+    key:
+      width: capx
+      height: capy
+      spread: kx      
+      padding: ky
+      autobind: 0
+    rows:
+      bottom:
+      home:
+      top:
+    columns:
+      pinky:
+        rows.top.skip: true
+      ring:
+        key.spread: pinky_adj
+        key.splay: -pinky_splay
+        key.stagger: pinky_stagger
+      middle:
+        key.spread: ring_adj
+        key.splay: -ring_splay
+        key.stagger: ring_stagger
+      index:
+        key.stagger: middle_stagger
+      far:
+        rows.bottom.skip: true
+        key.stagger: -index_stagger
+  zones.thumb:
+    mirror:
+      ref: matrix_far_top
+      shift: [0.5sf, 0.5sf]
+      distance: 13
+    key:
+      width: capx
+      height: capy
+      spread: kx      
+      padding: ky
+      autobind: 0
+    anchor:
+      ref: matrix_index_bottom
+      shift: [thumb_shiftx, thumb_shifty]
+    columns:
+     inner:
+     outer:
+         key.stagger: thumb_stagger
   mirror: &mirror
-   ref: main_far_top
-   distance: 47
+   ref: matrix_far_top
+   distance: 2kx
+
+outlines: 
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.5,ky-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: thumb_outer
+          shift: [0.51px,0.5py]
+        - ref: thumb_outer
+          shift: [0.51px,-0.53py]
+        - ref: thumb_outer
+          shift: [-0.5px,-0.53py]
+        - ref: thumb_inner
+          shift: [0.4px,-0.53py]
+        - ref: thumb_inner
+          shift: [-0.5px,-0.53py]
+        - ref: thumb_inner
+          shift: [-0.5px,1py]
+        - ref: matrix_index_bottom
+          shift: [-0.5px,-0.53py]
+        - ref: matrix_ring_bottom
+          shift: [-0.37px,-0.555py]
+        - ref: matrix_pinky_bottom
+          shift: [0.5px,-0.5py]
+        - ref: matrix_pinky_bottom
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_pinky_home
+          shift: [-0.5px,0.5py]
+        - ref: matrix_pinky_home
+          shift: [0.545px,0.5py]
+        - ref: matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_ring_top
+          shift: [0.65px,0.5py]
+        - ref: matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: matrix_index_top
+          shift: [-0.4px,0.5py]
+        - ref: matrix_index_top
+          shift: [0.5px,0.5py]
+        - ref: matrix_far_top
+          shift: [-0.4px,0.5py]
+        - ref: matrix_far_top
+          shift: [0.5px,0.5py]
+        - ref: matrix_far_home
+          shift: [0.5px,0.3py]
+
+        - ref: mirror_matrix_far_home
+          shift: [0.5px,0.3py]
+        - ref: mirror_matrix_far_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_far_top
+          shift: [-0.4px,0.5py]
+        - ref: mirror_matrix_index_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_index_top
+          shift: [-0.4px,0.5py]
+        - ref: mirror_matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_ring_top
+          shift: [0.65px,0.5py]
+        - ref: mirror_matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_pinky_home
+          shift: [0.545px,0.5py]
+        - ref: mirror_matrix_pinky_home
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [0.5px,-0.5py]
+        - ref: mirror_matrix_ring_bottom
+          shift: [-0.37px,-0.555py]
+        - ref: mirror_matrix_index_bottom
+          shift: [-0.5px,-0.53py]
+        - ref: mirror_thumb_inner
+          shift: [-0.5px,1py]
+        - ref: mirror_thumb_inner
+          shift: [-0.5px,-0.53py]
+        - ref: mirror_thumb_inner
+          shift: [0.4px,-0.53py]
+        - ref: mirror_thumb_outer
+          shift: [-0.5px,-0.53py]
+        - ref: mirror_thumb_outer
+          shift: [0.51px,-0.53py]
+        - ref: mirror_thumb_outer
+          shift: [0.51px,0.5py]
+      fillet: 2
+  combo:
+   - name: board
+   - operation: subtract
+     name: keys
+  key_outline:
+      - what: rectangle
+        bound: true
+        size: sf
+        where:
+          - /matrix_.*/
+          - /thumb_.*/u
