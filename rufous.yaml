@@ -1,6 +1,6 @@
 units:
-  capx: 18
-  capy: 18
+  capx: u
+  capy: u
   kx: u
   ky: u
   pinky_splay: 5
@@ -12,7 +12,7 @@ units:
   thumb_shiftx: 0.97kx
   thumb_shifty: -1.7ky
   thumb_stagger: -7
-  angle: 22  # Angle between halves
+  angle: 30  # Angle between halves
 
   # Defaults/Constants
   # ====================
@@ -86,7 +86,7 @@ points:
           column_net: P10
     columns.middle:
       key:
-        stagger: 0.25ky
+        stagger: 0.19ky
         splay: -ring_splay
         origin: [0, ring_adj]
       rows:
@@ -112,7 +112,7 @@ points:
           row_net: P1
           column_net: P9
     columns.index:
-      key.stagger: -0.25ky
+      key.stagger: -0.32ky
       rows:
         bottom:
           bind: [0.5ky, 0, 0, 0]
@@ -135,7 +135,7 @@ points:
           row_net: P0
           column_net: P9
     columns.inner:
-      key.stagger: -0.5ky
+      key.stagger: -0.58ky
       rows:
         bottom.skip: true
         home:
@@ -267,15 +267,24 @@ pcbs:
       main:
         outline: panel
     footprints:
-      - what: choc
-        where:
-          - /matrix_.*/
-          - /thumb_.*/
+      mx:
+        what: mx
+        where: true
         params:
           from: "{{row_net}}"
           to: "{{column_net}}"
-      - what: xiao
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{column_net}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0,-5]
+      xiao:
+        what: xiao
         where: mcu
         adjust.shift: [-0.5xiao_x, -0.5xiao_y]  # Anchor is topleft corner
-      - what: mountinghole
+      mountinghole:
+        what: mountinghole
         where: mounting_hole
