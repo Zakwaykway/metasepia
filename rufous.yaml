@@ -1,72 +1,21 @@
-presets:
-  # The appropriate switch footprint will still need to be set in the `pcb` section
-  choc_spaced:
-    capx: 17        # Key cap size horizontal
-    capy: 16        # Key cap size vertical
-    kx: 18.5        # Key spacing horizontal
-    ky: 17.5        # Key spacing vertical
-    pinky_splay: 5  # Degrees of splay between pinky and ring columns
-    pinky_adj: -3   # Adjustment to compensate for splay spacing
-    ring_splay: 3
-    ring_adj: -8
-    middle_splay: 0
-    middle_adj: 0
-    thumb_offsetx: 0.25kx
-  
-  choc_min_spaced:
-    capx: 14.5
-    capy: 14.5
-    kx: 15.5
-    ky: 15.5
-    pinky_splay: 5
-    pinky_adj: -3
-    ring_splay: 3
-    ring_adj: -8
-    middle_splay: 3
-    middle_adj: -5
-    thumb_offsetx: 1/3kx
-
-  mx_spaced:
-    capx: 18
-    capy: 18
-    kx: 19
-    ky: 19
-    pinky_splay: 5
-    pinky_adj: -4
-    ring_splay: 3
-    ring_adj: -10
-    middle_splay: 0
-    middle_adj: 0
-    thumb_offsetx: 0.25kx
-  
-  mx_min_spaced:
-    capx: 15.5
-    capy: 15.5
-    kx: 16 + 0.5
-    ky: 16 + 0.5
-    pinky_splay: 5
-    pinky_adj: -3
-    ring_splay: 3
-    ring_adj: -8
-    middle_splay: 3
-    middle_adj: -5
-    thumb_offsetx: 1/3kx
-
 units:
   capx: 18
   capy: 18
-  kx: 19
-  ky: 19
+  kx: u
+  ky: u
   pinky_splay: 5
-  pinky_adj: -8.8
-  ring_splay: 4
-  ring_adj: -8
+  pinky_adj: -0.5ky
+  ring_splay: 5
+  ring_adj: -0.5kx
   middle_splay: 0
   middle_adj: 0
-  thumb_offsetx: 0.25kx
+  thumb_shiftx: 0.97kx
+  thumb_shifty: -1.7ky
+  thumb_stagger: -7
   angle: 22  # Angle between halves
 
   # Defaults/Constants
+  # ====================
   $default_height: 0  # Points invisible by default unless height/width explicitly set
   $default_width: 0
   xiao_x: 17.8
@@ -110,7 +59,7 @@ points:
           column_net: P10
     columns.ring:
       key:
-        stagger: 1.4ky
+        stagger: 1.45ky
         splay: -pinky_splay
         origin: [0, pinky_adj]
       rows:
@@ -137,7 +86,7 @@ points:
           column_net: P10
     columns.middle:
       key:
-        stagger: 0.2ky
+        stagger: 0.25ky
         splay: -ring_splay
         origin: [0, ring_adj]
       rows:
@@ -163,7 +112,7 @@ points:
           row_net: P1
           column_net: P9
     columns.index:
-      key.stagger: -0.38ky
+      key.stagger: -0.25ky
       rows:
         bottom:
           bind: [0.5ky, 0, 0, 0]
@@ -186,7 +135,7 @@ points:
           row_net: P0
           column_net: P9
     columns.inner:
-      key.stagger: -0.6ky
+      key.stagger: -0.5ky
       rows:
         bottom.skip: true
         home:
@@ -206,8 +155,7 @@ points:
   zones.thumb:
     anchor:
       ref: matrix_index_bottom
-      shift: [0.98kx, -30]
-      rotate: -20
+      shift: [thumb_shiftx, thumb_shifty]
     mirror.$extends: points.zones.matrix.mirror
     key.$extends: points.zones.matrix.key
     columns:
@@ -221,7 +169,7 @@ points:
           column_net: P10
       reachy:
         key:
-          stagger: -0.2ky       
+          stagger: -0.25ky        
           bind: [1.5ky, 0, 0, 0]
           row_net: P4
           column_net: P8
@@ -319,7 +267,7 @@ pcbs:
       main:
         outline: panel
     footprints:
-      - what: mx
+      - what: choc
         where:
           - /matrix_.*/
           - /thumb_.*/
@@ -329,5 +277,5 @@ pcbs:
       - what: xiao
         where: mcu
         adjust.shift: [-0.5xiao_x, -0.5xiao_y]  # Anchor is topleft corner
-      - what: mounting_hole
+      - what: mountinghole
         where: mounting_hole
