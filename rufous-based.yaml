@@ -1,12 +1,14 @@
+meta:
+  engine: 4.1.0
 units:
-  capx: u
-  capy: u
+  capx: 18
+  capy: 18
   kx: u
   ky: u
   pinky_splay: 5
-  pinky_adj: -0.5ky
+  pinky_adj: -0.55ky
   ring_splay: 5
-  ring_adj: -0.5kx
+  ring_adj: -0.55kx
   middle_splay: 0
   middle_adj: 0
   thumb_shiftx: 0.97kx
@@ -42,24 +44,24 @@ points:
       top:
     columns.pinky:
       rows:
-        bottom.skip: true
-        home:
-          bind: [0.5ky, 0.5kx, 0, 0]
+        top.skip: true
+        bottom:
+          bind: [0.5ky, 0, 0, 0]
           row_net: P2
           column_net: P6
-        top:
-          bind: [0, 0.5kx, 0.5ky, 0]
+        home:
+          bind: [0, 0.5kx, 0.22ky, 0]
           row_net: P0
           column_net: P6
-        home.mirror:
+        bottom.mirror:
           row_net: P3
           column_net: P10
-        top.mirror:
+        home.mirror:
           row_net: P1
           column_net: P10
     columns.ring:
       key:
-        stagger: 1.45ky
+        stagger: 0.75ky
         splay: -pinky_splay
         origin: [0, pinky_adj]
       rows:
@@ -112,7 +114,7 @@ points:
           row_net: P1
           column_net: P9
     columns.index:
-      key.stagger: -0.32ky
+      key.stagger: -0.4ky
       rows:
         bottom:
           bind: [0.5ky, 0, 0, 0]
@@ -139,11 +141,11 @@ points:
       rows:
         bottom.skip: true
         home:
-          bind: [0.5ky, 0, 0.5ky, 0.5kx]
+          bind: [0.5ky, 0, 0.ky, 0.5kx]
           row_net: P2
           column_net: P8
         top:
-          bind: [0, 0, 0.5ky, 0.5kx]
+          bind: [0, 0, 1.42ky, 0.3kx]
           row_net: P0
           column_net: P8
         home.mirror:
@@ -161,7 +163,7 @@ points:
     columns:
       tucky:
         key:
-          bind: [0.5ky, 0.5kx, 0, 0]
+          bind: [0.ky, 0.5kx, 0, 0]
           row_net: P5
           column_net: P7
         key.mirror:
@@ -169,7 +171,7 @@ points:
           column_net: P10
       reachy:
         key:
-          stagger: -0.25ky        
+          stagger: -0.25ky
           bind: [1.5ky, 0, 0, 0]
           row_net: P4
           column_net: P8
@@ -190,7 +192,7 @@ points:
   zones.mounting_hole:
     anchor:
       ref: matrix_inner_home
-      shift: [-0.5kx + 4, -ky + 4]
+      shift: [-0.5kx+4, -ky+6.5]
     mirror.$extends: points.zones.matrix.mirror
     key:
       width: 1
@@ -220,8 +222,8 @@ outlines:
         what: circle
         where:
           aggregate.parts: [thumb_reachy, mirror_thumb_reachy]
-          shift: [0, 0.5sf - 60]
-        radius: 60  # Should be the same as the last number in `shift` above
+          shift: [0, 0.5sf - 55]
+        radius: 55  # Should be the same as the last number in `shift` above
       - _key_outline
     panel:
       - name: _panel
@@ -267,24 +269,15 @@ pcbs:
       main:
         outline: panel
     footprints:
-      mx:
-        what: mx
-        where: true
+      - what: choc
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
         params:
           from: "{{row_net}}"
           to: "{{column_net}}"
-      diode:
-        what: diode
-        where: true
-        params:
-          from: "{{column_net}}"
-          to: "{{row_net}}"
-        adjust:
-          shift: [0,-5]
-      xiao:
-        what: xiao
+      - what: xiao
         where: mcu
         adjust.shift: [-0.5xiao_x, -0.5xiao_y]  # Anchor is topleft corner
-      mountinghole:
-        what: mountinghole
+      - what: mountinghole
         where: mounting_hole
