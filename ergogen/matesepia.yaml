@@ -15,6 +15,8 @@ units:
   thumb_shifty: -1.7ky
   thumb_stagger: -5
   angle: 32.5  # between halves
+  q: 0.05kx # extra room for footprints
+  j: 0.05ky
 
   $default_height: 0 
   $default_width: 0
@@ -44,11 +46,11 @@ points:
       rows:
         top.skip: true
         bottom:
-          bind: [0.5ky, 0, 0, 0]
+          bind: [0.5ky, q, j, q]
           row_net: P2
           column_net: P6
         home:
-          bind: [0, 0.5kx, 0.22ky, 0]
+          bind: [j, 0.5kx, 0.22ky, q]
           row_net: P0
           column_net: P6
         bottom.mirror:
@@ -64,15 +66,15 @@ points:
         origin: [0, pinky_adj]
       rows:
         bottom:
-          bind: [0.5ky, 0, 0, 0]
+          bind: [j, q, j, 0.5kx]
           row_net: P4
           column_net: P6
         home:
-          bind: [0, 0.5kx, 0, 0]
+          bind: [0.5ky, 0.5kx, 0.5ky, q]
           row_net: P3
           column_net: P6
         top:
-          bind: [0, 0.5kx, 0.5ky, 0]
+          bind: [j, 1kx, 0.5ky, q]
           row_net: P1
           column_net: P6
         bottom.mirror:
@@ -91,15 +93,15 @@ points:
         origin: [0, ring_adj]
       rows:
         bottom:
-          bind: [0.5ky, 0.5kx, 0, 0.5kx]
+          bind: [0.5ky, 0.5kx, j, 0.5kx]
           row_net: P5
           column_net: P6
         home:
-          bind: [0, 0.5kx, 0, 0]
+          bind: [0.5ky, 0.5kx, 0.5ky, 0.5kx]
           row_net: P2
           column_net: P7
         top:
-          bind: [0, 0, 0.5ky, 0]
+          bind: [j, q, 0.5ky, q]
           row_net: P0
           column_net: P7
         bottom.mirror:
@@ -115,14 +117,14 @@ points:
       key.stagger: -0.45ky
       rows:
         bottom:
-          bind: [0.5ky, 0kx, 0, 0]
+          bind: [0.5ky, q, j, q]
           row_net: P4
           column_net: P7
         home:
           row_net: P3
           column_net: P7
         top:
-          bind: [0, 0, 0.5ky, 0.5kx]
+          bind: [j, q, 0.5ky, 0.5kx]
           row_net: P1
           column_net: P7
         bottom.mirror:
@@ -139,11 +141,11 @@ points:
       rows:
         bottom.skip: true
         home:
-          bind: [0.5ky, 0kx, 0.25ky, 0.5kx]
+          bind: [0.5ky, q, 0.25ky, 0.5kx]
           row_net: P2
           column_net: P8
         top:
-          bind: [0, 0, 0.5ky, 0.5kx]
+          bind: [j, q, 0.5ky, 0.5kx]
           row_net: P0
           column_net: P8
         home.mirror:
@@ -161,7 +163,7 @@ points:
     columns:
       tucky:
         key:
-          bind: [0.ky, 0.5kx, 0, 0]
+          bind: [j, 0.5kx, j, q]
           row_net: P5
           column_net: P7
         key.mirror:
@@ -170,7 +172,7 @@ points:
       reachy:
         key:
           stagger: -0.25ky
-          bind: [1.5ky, 0, 0, 0.kx]
+          bind: [1.5ky, q, j, q]
           row_net: P4
           column_net: P8
         key.mirror:
@@ -208,7 +210,7 @@ outlines:
         where:
           ref: reference_top_center
           shift: [0, -1.5ky]
-        size: [3.2kx, 3ky]
+        size: [3.21kx, 3ky]
       - what: rectangle
         bound: true
         size: sf
@@ -225,7 +227,7 @@ outlines:
       - _key_outline
     panel:
       - name: _panel
-        fillet: 1.5
+        fillet: 2
     _switches:
       - what: rectangle
         size: 14
@@ -262,7 +264,7 @@ outlines:
         name: _switches
         fillet: 0.5
 pcbs:
-  matasepia:
+  matesepia:
     outlines:
       main:
         outline: panel
@@ -287,7 +289,7 @@ pcbs:
         adjust:
           shift: [0, -5]
       mounting_holes:
-         what: ceoloide/mounting_hole_npth
+         what: mountinghole
          where: /.*mounting_hole/
       xiao:
           what: xiao
