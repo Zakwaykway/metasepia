@@ -195,23 +195,6 @@
 	(pad "1" smd rect
 		(at 1.6 0.2 180)
 		(size 1 1.4)
-		(layers "F.Cu" "F.Mask" "F.Paste")
-		(teardrops
-			(best_length_ratio 0.5)
-			(max_length 1)
-			(best_width_ratio 1)
-			(max_width 2)
-			(curved_edges no)
-			(filter_ratio 0.9)
-			(enabled yes)
-			(allow_two_segments yes)
-			(prefer_zone_connections yes)
-		)
-		(uuid "8f54b8f0-47ff-4d64-beea-d1ac58941acb")
-	)
-	(pad "1" smd rect
-		(at 1.6 0.2 180)
-		(size 1 1.4)
 		(layers "B.Cu" "B.Mask" "B.Paste")
 		(teardrops
 			(best_length_ratio 0.5)
@@ -225,23 +208,6 @@
 			(prefer_zone_connections yes)
 		)
 		(uuid "f53bf832-0948-4072-b5f0-b09df1e5f885")
-	)
-	(pad "2" smd rect
-		(at -1.7 0.2 180)
-		(size 1 1.4)
-		(layers "F.Cu" "F.Mask" "F.Paste")
-		(teardrops
-			(best_length_ratio 0.5)
-			(max_length 1)
-			(best_width_ratio 1)
-			(max_width 2)
-			(curved_edges no)
-			(filter_ratio 0.9)
-			(enabled yes)
-			(allow_two_segments yes)
-			(prefer_zone_connections yes)
-		)
-		(uuid "0d6c8dd0-bfe5-4c23-986e-3967fb7e79c7")
 	)
 	(pad "2" smd rect
 		(at -1.7 0.2 180)
