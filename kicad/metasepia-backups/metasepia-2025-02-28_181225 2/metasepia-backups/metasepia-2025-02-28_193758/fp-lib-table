@@ -1,6 +1,0 @@
-(fp_lib_table
-  (version 7)
-  (lib (name "troch")(type "KiCad")(uri "/Users/zachary/Documents/git/metasepia/footprints/kicad/trochilidae.pretty")(options "")(descr ""))
-  (lib (name "mcu")(type "KiCad")(uri "/Users/zachary/Documents/git/metasepia/footprints/kicad/mcu.pretty")(options "")(descr ""))
-  (lib (name "marbastlib")(type "KiCad")(uri "/Users/zachary/Documents/git/metasepia/footprints/kicad/marbastlib.pretty")(options "")(descr ""))
-)
