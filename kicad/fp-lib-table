@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "frequent")(type "KiCad")(uri "/Users/zachary/Documents/git/metasepia/footprints/kicad/frequent.pretty")(options "")(descr ""))
+)
