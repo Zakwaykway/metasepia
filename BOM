@@ -1,8 +1,13 @@
 xiao BLE nrf52840 (two-pack):  30.79, 6.69 shipping
 IN4148 SOD-123 SMD diodes (100): 2.69
+
+
+
 To-order:
 		30+ hotswap sockets, battery;
+		solder pump, flux, copper wool to clean iron
 		pcb, plate?
+
 To-do:
 		remove diode footprint front silkscreen
 		add silkscreen information for xiao
