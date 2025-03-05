@@ -14,15 +14,16 @@ units:
   middle_stagger: 0.19ky
   index_stagger: -0.55ky
   inner_stagger: -0.58ky
-  thumb_base_angle: 5
+  thumb_base_angle: -10
   thumb_splay: -15
-  thumb_stagger: -0.15ky
-  thumb_shiftx: 1kx
+  thumb_stagger: -0.2ky
+  thumb_adj: 2
+  thumb_shiftx: 1.35kx
   thumb_shifty: -1.25ky
   angle: 35  # between halves
-  curve: 50
-  curve_shift: 1.25 - 0.005curve
-  center_block: 5.175kx
+  curve: 44
+  curve_shift: 1.4 - 0.005curve
+  center_block: 5.05kx
 
   $default_height: 0 
   $default_width: 0
@@ -170,7 +171,7 @@ points:
       tucky:
         key:
           splay: thumb_base_angle
-          bind: [2ky, 0.45kx+37.5-curve, j, q]
+          bind: [1.5ky, 0.45kx+37.5-curve, j, q]
           row_net: P5
           column_net: P7
         key.mirror:
@@ -178,10 +179,10 @@ points:
           column_net: P10
       reachy:
         key:
-          origin: [0, adj]
+          origin: [0, adj + thumb_adj]
           splay: thumb_splay
           stagger: thumb_stagger
-          bind: [j, q, j, 1kx]
+          bind: [0.75j, q, j, 1kx]
           row_net: P4
           column_net: P8
         key.mirror:

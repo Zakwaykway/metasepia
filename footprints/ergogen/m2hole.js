@@ -8,7 +8,7 @@ module.exports = {
         class: 'HOLE',
     },
     body: p => `
-    (module "MountingHole_2.2mm_M2_Pad_Via" (version 20210722) (generator pcbnew) (layer "F.Cu")
+    (module "m2hole" (version 20210722) (generator pcbnew) (layer "F.Cu")
       (tedit 56DDB9C7)
       ${p.at /* parametric position */} 
     
