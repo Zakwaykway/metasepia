@@ -1,4 +1,4 @@
-898244310068154
+896503698247810
 PCM_Mounting_Keyboard_Stabilizer
 Stabilizer_Cherry_MX_2.00u
 Cherry MX PCB Stabilizer 2.00u 2.25u 2.50u 2.75u
@@ -3577,13 +3577,6 @@ Kailh KH CPG1425 Keyboard Low Profile Notebook Keyswitch Switch Cutout Keycap IS
 2
 2
 frequent
-custom_hsmx
-Kailh keyswitch Hotswap Socket
-Kailh Keyboard Keyswitch Switch Hotswap Socket Relief Cutout
-0
-2
-2
-frequent
 diode
 
 
@@ -3592,8 +3585,8 @@ diode
 2
 frequent
 hsmx
-
-
+Kailh keyswitch Hotswap Socket
+Kailh Keyboard Keyswitch Switch Hotswap Socket Relief Cutout
 0
 2
 2
@@ -3605,7 +3598,7 @@ m2hole
 1
 1
 frequent
-xiao-ble-smd-cutout
+xiao-smd
 
 
 0
