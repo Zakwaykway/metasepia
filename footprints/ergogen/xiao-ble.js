@@ -38,7 +38,7 @@ module.exports = {
     NFC1: {type: 'net', value: 'NFC1'}
   },
   body: p => `
-    (module XIAO-BLE (layer F.Cu) (tedit 640103B8)
+    (module frequent:xiao-smd (layer F.Cu) (tedit 640103B8)
       ${p.at /* parametric position */}
       
       ${'' /* footprint reference */}
