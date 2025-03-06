@@ -5,8 +5,8 @@ units:
   capy: u-0.5
   kx: u
   ky: u
-  q: 0.05kx # extra padding for footprints
-  j: 0.05ky
+  q: 0.05kx # extra padding for footprints; q is x, j is y
+  j: 0.00ky
   adj: -0.45ky
   pinky_splay: 7
   ring_splay: 5
@@ -320,6 +320,6 @@ pcbs:
       mounting_holes:
          what: mountinghole
          where: /.*mounting_hole_*/
-      xiao:
+      xiao:n
           what: xiao
           where: mcu

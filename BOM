@@ -4,15 +4,13 @@ IN4148 SOD-123 SMD diodes (100): 2.69
 
 
 To-order:
-		30+ hotswap sockets, battery;
-		solder pump, flux, copper wool to clean iron
-		pcb, plate?
-		magnetic usbc cable
+	hotswap sockets, battery;
+	flux, pump, copper wool;
+	pcb, plate?
+	magnetic usbc cable
 
 To-do:
-		add silkscreen information for xiao
-		
-
-silkscreen: "made with autism", sandra art
+	add silkscreen information for xiao
+		silkscreen: "made with autism", sandra art
 
 
