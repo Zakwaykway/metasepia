@@ -5,8 +5,8 @@ units:
   capy: u-0.5
   kx: u
   ky: u
-  q: 0.05kx # extra padding for footprints; q is x, j is y
-  j: 0.00ky
+  q: 0.05kx # extra padding for footprints
+  j: 0.05ky
   adj: -0.45ky
   pinky_splay: 7
   ring_splay: 5
@@ -199,6 +199,23 @@ points:
     key:
       width: xiao_x
       height: xiao_y
+  zones.battery:
+    key:
+      width: 1.75
+      height: 3.5
+    anchor:
+      ref: mcu
+      shift: [0.85kx, -0.5ky]
+    columns:
+      pos:
+        key:
+          splay: angle
+          net: BAT_POS
+      neg:
+        key:
+          shift: [-kx + 2.5]
+          net: BAT_NEG
+      
   zones.mounting_hole_center:
     anchor:
       aggregate.parts: [thumb_tucky, matrix_inner_home]
@@ -272,6 +289,10 @@ outlines:
       - what: rectangle
         where: mcu
         size: [xiao_x, xiao_y]
+    _battery:
+      - what: rectangle
+        where: battery
+        size: [5, 4]
     _mounting_holes:
       - what: circle
         where:
@@ -281,6 +302,7 @@ outlines:
       - panel
       - ^_switches
       - ^_mcu
+      - ^_battery
       - ^_mounting_holes
     demo_keycaps:
       - panel
@@ -320,6 +342,9 @@ pcbs:
       mounting_holes:
          what: mountinghole
          where: /.*mounting_hole_*/
-      xiao:n
+      xiao:
           what: xiao
           where: mcu
+      battery:
+          what: pad
+          where: battery
