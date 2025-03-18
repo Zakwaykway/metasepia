@@ -14,29 +14,29 @@ units:
   $default_width: 0
   switch: 16
 
-  spacing: xiao_x + 8
+  spacing: xiao_x + 6
   angle: 33  # between halves
-  curve: 40 + spacing
-  curve_shift: -2
-  center_block: 5.05kx
-  mcu_y: 21
-  extra_y: 15
-  curve2: 70
-  curve2_shift: 1.25
+  curve: 50 + spacing
+  curve_shift: 10
+  center_block: 4kx # mid width
+  mcu_y: 24
+  extra_y: 30 # dont need to touch
+  curve2: 65
+  curve2_shift: -19.25 + mcu_y
 
   pinky_splay: 8
-  ring_splay: 5
   ring_stagger: 0.7ky
+  ring_splay: 5
   middle_stagger: 0.19ky
-  middle_splay: 6
+  middle_splay: 3
   index_stagger: -0.55ky
   inner_stagger: -0.58ky
-  thumb_base_angle: -10
-  thumb_splay: -15
   thumb_stagger: -0.2ky
+  thumb_base_angle: -16
+  thumb_splay: -18
   thumb_adj: 2
-  thumb_shiftx: 1.325kx
-  thumb_shifty: -1.3ky
+  thumb_shiftx: 0.95kx
+  thumb_shifty: -1.5ky
 
 
 points:
@@ -171,6 +171,7 @@ points:
         top.mirror:
           row_net: P1
           column_net: P8
+
   zones.thumb:
     anchor:
       ref: matrix_index_bottom
@@ -181,7 +182,7 @@ points:
       tucky:
         key:
           splay: thumb_base_angle
-          bind: [1.5ky, 0.45kx+37.5-curve, j, q]
+          bind: [1.5ky, 0.3kx, 0, 0]
           row_net: P5
           column_net: P7
         key.mirror:
@@ -192,7 +193,7 @@ points:
           origin: [0, adj + thumb_adj]
           splay: thumb_splay
           stagger: thumb_stagger
-          bind: [1.1j, 1.1q, 1.1j, 1kx]
+          bind: [3j, q, j, 1kx]
           row_net: P4
           column_net: P8
         key.mirror:
@@ -222,16 +223,8 @@ points:
 
   zones.mounting_hole_top:
     anchor:
-      aggregate.parts: [matrix_pinky_home, matrix_ring_bottom]
-      shift: [0kx, -0.1ky]
-    mirror.$extends: points.zones.matrix.mirror
-    key:
-      width: 1
-      height: 1
-  zones.mounting_hole_center:
-    anchor:
-      aggregate.parts: [matrix_middle_top, matrix_index_top]
-      shift: [0.2, -0.]
+      aggregate.parts: [matrix_pinky_top, matrix_ring_top]
+      shift: [-0.02kx, -0.15ky]
     mirror.$extends: points.zones.matrix.mirror
     key:
       width: 1
@@ -239,6 +232,7 @@ points:
   zones.mounting_hole_bottom:
     anchor:
       aggregate.parts: [thumb_tucky, thumb_reachy]
+      shift: [0.3, 1]
     mirror.$extends: points.zones.matrix.mirror
     key:
       width: 1
@@ -256,18 +250,35 @@ outlines:
         where:
           ref: reference_top_center
           shift: [0, -1ky-0.5mcu_y+0.5extra_y]
-        size: [4.35kx+spacing, 2ky+mcu_y+extra_y]
-      - what: rectangle # mid width rectangle
+        size: [3.65kx+spacing, 2ky+mcu_y+extra_y]
+      - what: rectangle # block for curve
         where: 
           aggregate.parts: [thumb_reachy, mirror_thumb_reachy, matrix_index_bottom, mirror_matrix_index_bottom]
           shift: [0, 0.3ky+0.5mcu_y]
-        size: [center_block+spacing-13, 2.25ky+mcu_y]
+        size: [center_block+spacing, 2.5ky+mcu_y]
+      - what: polygon # edge wedges, main shape
+        points:
+          - ref: matrix_index_bottom
+            shift: [-0.35kx, -0.4ky]
+          - ref: matrix_index_bottom
+            shift: [0.15kx, -0.6ky]
+          - ref: thumb_tucky
+            shift: [-0.62kx, 0.3ky]
+          - ref: thumb_tucky
+            shift: [-0.415kx,-0.5ky]
+          - ref: thumb_reachy
+            shift: [-0.5kx,-0.45ky]
+          - ref: mirror_thumb_tucky
+            shift: [0, 0]
+          - ref: mirror_matrix_index_bottom
+            shift: [-0.2kx, -0.3ky]
       - what: rectangle # sections to fillet
         bound: true
         size: switch
         where:
           - /matrix_inner_.*/ 
           - /matrix_index_bottom/
+          - /matrix_middle_top/
           - /thumb_.*/
     _panel:
       - name: _center
@@ -279,7 +290,7 @@ outlines:
           shift: [0, -curve + 0.5curve_shift +15]
         radius: curve
       - operation: subtract
-        what: circle
+        what: circle # top curve
         where:
           aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
           shift: [0, 0+curve2 + curve2_shift]
