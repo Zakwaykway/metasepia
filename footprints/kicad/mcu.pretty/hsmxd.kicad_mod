@@ -1,4 +1,4 @@
-(footprint "hsmx"
+(footprint "MX"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
@@ -6,7 +6,7 @@
 	(descr "Kailh keyswitch Hotswap Socket")
 	(tags "Kailh Keyboard Keyswitch Switch Hotswap Socket Relief Cutout")
 	(property "Reference" "REF**"
-		(at 4 2 0)
+		(at 4.25 -1.55 0)
 		(layer "F.SilkS")
 		(uuid "305e4861-e9ee-4ba4-b678-c194406451d3")
 		(effects
@@ -17,23 +17,23 @@
 			)
 		)
 	)
-	(property "Value" "hsmx"
-		(at 0 8 0)
-		(layer "F.Fab")
+	(property "Value" "Val**"
+		(at -0.049999 3.9 202.5)
+		(layer "F.SilkS")
 		(hide yes)
-		(uuid "be611dff-89aa-42c5-b1d5-880537e74636")
+		(uuid "65610c0c-69f1-473f-bb13-f6ad46500173")
 		(effects
 			(font
-				(size 1 1)
+				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
 	)
 	(property "Datasheet" ""
-		(at 0 0 0)
+		(at -0.049999 3.85 180)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "7c4b18f1-6f99-41a2-bbbc-863e1bb55634")
+		(uuid "d70bbfee-ca09-45d2-abb7-59eec9b78288")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -42,10 +42,10 @@
 		)
 	)
 	(property "Description" ""
-		(at 0 0 0)
+		(at -0.049999 3.85 180)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "0c8cc0ee-bd53-4791-9c35-447eb131bfba")
+		(uuid "ce50f374-07ad-4199-81a9-87a9a8ff6de5")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -53,7 +53,7 @@
 			)
 		)
 	)
-	(attr smd)
+	(attr smd through_hole)
 	(fp_line
 		(start -4.1 -6.9)
 		(end 1 -6.9)
@@ -65,6 +65,36 @@
 		(uuid "829a9ad7-15ee-40eb-b323-c5def3c46631")
 	)
 	(fp_line
+		(start -0.3 3.45)
+		(end 0.300001 3.85)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "B.SilkS")
+		(uuid "4374dafb-d1b4-4b41-a6e1-1a5043a527fe")
+	)
+	(fp_line
+		(start -0.299999 3.85)
+		(end -0.799999 3.85)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "B.SilkS")
+		(uuid "08c85ee6-fc9b-4268-a31f-26447645e9a5")
+	)
+	(fp_line
+		(start -0.299999 4.25)
+		(end -0.3 3.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "B.SilkS")
+		(uuid "cf46169c-2bf3-41d2-a8be-fb43af45617a")
+	)
+	(fp_line
 		(start -0.2 -2.7)
 		(end 4.9 -2.7)
 		(stroke
@@ -73,6 +103,46 @@
 		)
 		(layer "B.SilkS")
 		(uuid "d0b37358-8155-463d-b821-0ccfc0d4ae35")
+	)
+	(fp_line
+		(start 0.300001 3.85)
+		(end -0.299999 4.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "B.SilkS")
+		(uuid "41a24306-d1ab-46a7-a673-e69985023f8c")
+	)
+	(fp_line
+		(start 0.300001 3.85)
+		(end 0.300001 3.299999)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "B.SilkS")
+		(uuid "38b93bdb-c078-4a67-b3a3-6261d35b77a6")
+	)
+	(fp_line
+		(start 0.300001 3.85)
+		(end 0.300001 4.4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "B.SilkS")
+		(uuid "168a53f0-69bf-483a-8e24-e8ce12e36789")
+	)
+	(fp_line
+		(start 0.700001 3.85)
+		(end 0.300001 3.85)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "B.SilkS")
+		(uuid "e57d8e44-e950-4834-a60c-9faa37435562")
 	)
 	(fp_arc
 		(start -6.1 -4.9)
@@ -275,6 +345,23 @@
 		(layers "*.Cu" "*.Mask")
 		(uuid "1cd5c712-2fb2-41e2-8f60-8bf8ea8eabd9")
 	)
+	(pad "1" smd rect
+		(at 1.600001 3.85 180)
+		(size 1 1.4)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(teardrops
+			(best_length_ratio 0.5)
+			(max_length 1)
+			(best_width_ratio 1)
+			(max_width 2)
+			(curved_edges no)
+			(filter_ratio 0.9)
+			(enabled yes)
+			(allow_two_segments yes)
+			(prefer_zone_connections yes)
+		)
+		(uuid "f53bf832-0948-4072-b5f0-b09df1e5f885")
+	)
 	(pad "1" smd roundrect
 		(at 5.842 -5.08)
 		(size 2.55 2.5)
@@ -310,6 +397,23 @@
 			(prefer_zone_connections yes)
 		)
 		(uuid "3de04889-181d-4e91-a0f4-95b9efba74e0")
+	)
+	(pad "2" smd rect
+		(at -1.699999 3.85 180)
+		(size 1 1.4)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(teardrops
+			(best_length_ratio 0.5)
+			(max_length 1)
+			(best_width_ratio 1)
+			(max_width 2)
+			(curved_edges no)
+			(filter_ratio 0.9)
+			(enabled yes)
+			(allow_two_segments yes)
+			(prefer_zone_connections yes)
+		)
+		(uuid "ed2e35cc-4533-4992-a019-9fd304d36a74")
 	)
 	(embedded_fonts no)
 	(model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Hotswap_Kailh_MX.wrl"

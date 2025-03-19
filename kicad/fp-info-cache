@@ -1,4 +1,4 @@
-487707155130054
+480743104602154
 PCM_Switch_Keyboard_Hotswap_Kailh
 SW_Hotswap_Kailh_Choc_V1
 Kailh Choc keyswitch V1 CPG1350 V1 Hotswap
@@ -1680,42 +1680,28 @@ Kailh Keyboard Keyswitch Switch Hotswap Socket Plated Relief Cutout Keycap ISOEn
 6
 2
 frequent
-diode
+ComboDiode
 
 
 0
 2
 2
 frequent
-hsmx
+MX
 Kailh keyswitch Hotswap Socket
 Kailh Keyboard Keyswitch Switch Hotswap Socket Relief Cutout
 0
 2
 2
 frequent
-hsmxd
-Kailh keyswitch Hotswap Socket
-Kailh Keyboard Keyswitch Switch Hotswap Socket Relief Cutout
-0
-4
-2
-frequent
-m2hole
+slider
 
 
 0
-1
-1
+6
+6
 frequent
 xiao-smd
-
-
-0
-16
-16
-frequent
-xiao-tht
 
 
 0
@@ -1777,20 +1763,6 @@ Hotswap footprint for Kailh Choc style switches
 0
 6
 2
-mcu
-xiao-ble-smd-cutout
-
-
-0
-22
-22
-mcu
-xiao-ble-tht
-
-
-0
-22
-22
 trochilidae
 BatteryPadsReversible
 
