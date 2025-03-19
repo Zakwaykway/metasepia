@@ -13,16 +13,16 @@ units:
   $default_height: 0
   $default_width: 0
   switch: 16
+  extra_y: 30 # dont need to touch
 
   spacing: xiao_x + 6
   angle: 33  # between halves
   curve: 50 + spacing
   curve_shift: 10
   center_block: 4kx # mid width
-  mcu_y: 24
-  extra_y: 30 # dont need to touch
+  mcu_y: 24.3
+  curve2_shift: -19.5 + mcu_y
   curve2: 65
-  curve2_shift: -19.25 + mcu_y
 
   pinky_splay: 8
   ring_stagger: 0.7ky
@@ -265,13 +265,19 @@ outlines:
           - ref: thumb_tucky
             shift: [-0.62kx, 0.3ky]
           - ref: thumb_tucky
-            shift: [-0.415kx,-0.5ky]
+            shift: [-0.43kx,-0.5ky]
           - ref: thumb_reachy
             shift: [-0.5kx,-0.45ky]
+          - ref: mirror_thumb_reachy
+            shift: [-0.5kx, -0.45ky]
           - ref: mirror_thumb_tucky
-            shift: [0, 0]
+            shift: [-0.43kx,-0.5ky]
+          - ref: mirror_thumb_tucky
+            shift: [-0.62kx, 0.3ky]
           - ref: mirror_matrix_index_bottom
-            shift: [-0.2kx, -0.3ky]
+            shift: [0.15kx, -0.6ky]
+          - ref: mirror_matrix_index_bottom
+            shift: [-0.35kx, -0.4ky]
       - what: rectangle # sections to fillet
         bound: true
         size: switch
@@ -355,12 +361,19 @@ pcbs:
           hotswap: true
           from: "{{row_net}}"
           to: "{{colrow}}"
+      diode:
+        what: diode
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+        params:
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+        adjust:
+          shift: [0, -4]
       mounting_holes:
          what: mountinghole
          where: /.*mounting_hole_*/
       xiao:
           what: xiao
           where: mcu
-      battery:
-          what: pad
-          where: battery
