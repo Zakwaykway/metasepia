@@ -1,4 +1,4 @@
-482482363355632
+487707155130054
 PCM_Switch_Keyboard_Hotswap_Kailh
 SW_Hotswap_Kailh_Choc_V1
 Kailh Choc keyswitch V1 CPG1350 V1 Hotswap
@@ -1714,6 +1714,13 @@ xiao-smd
 0
 16
 16
+frequent
+xiao-tht
+
+
+0
+16
+16
 marbastlib
 SW_MX_1u
 Footprint for Cherry MX style switches
@@ -1770,6 +1777,20 @@ Hotswap footprint for Kailh Choc style switches
 0
 6
 2
+mcu
+xiao-ble-smd-cutout
+
+
+0
+22
+22
+mcu
+xiao-ble-tht
+
+
+0
+22
+22
 trochilidae
 BatteryPadsReversible
 
