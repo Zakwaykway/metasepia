@@ -1,12 +1,25 @@
-xiao BLE nrf52840 (two-pack):  30.79, 6.69 shipping
+xiao BLE nrf52840 (two-pack):  30.79+6.69 shipping
 IN4148 SOD-123 SMD diodes (100): 2.69
+Kailh MX hotswap sockets (110): 11.28
+MSS22D18 SMT slider switch (20): 2.47
+magnetic usbc adapter + plug: 5.34
+2.54mm female-male gold pin headers (40): 4.29
+desoldering pump + wick (2.5mm 1.5m): 3.79
+soldering iron: 4.79
+keycaps & switches (spares): 6.96+7.47
 
 
 
-To-order:
+
+To order:
 	pcb, plate
 
-To-do:
-	silkscreen: "made with autism", sandra art
+To do:
+	silkscreen: "made with autism",
+	sandra art, yang art,
+	mousebite pinky top & bottom,
+	inner column be -0.35u from top
+
+
 
 
