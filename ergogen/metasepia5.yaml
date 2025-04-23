@@ -1,5 +1,5 @@
 meta:
-  name: metasepia_v4
+  name: metasepia_v5
 units:
   capx: u-0.5
   capy: u-0.5
@@ -7,20 +7,20 @@ units:
   ky: u
   q: 0.05kx # extra padding for footprints
   j: 0.05ky
-  adj: -0.45ky
-  xiao_x: 17.8
+  adj: -0.45ky # offset for splayed cols
+  xiao_x: 17.8 # xiao measurements
   xiao_y: 21
   $default_height: 0
   $default_width: 0
-  switch: 16
+  switch: 16 # switch size
   extra_y: 30 # dont need to touch
 
   spacing: xiao_x + 4
   angle: 30  # between halves
-  curve: 50 + spacing
-  curve_shift: 10
+  curve: 55 + spacing
+  curve_shift: 8
   center_block: 4kx # mid width
-  mcu_y: 14.5
+  mcu_y: 14.5 # mcu height from curve
   curve2_shift: -16 + mcu_y
   curve2: 60
 
@@ -40,7 +40,7 @@ units:
 
 
 points:
-  zones.matrix:
+  zones.matrix: 
     anchor.shift: [125, -100]
     rotate: -angle + pinky_splay + ring_splay + middle_splay
     mirror:
@@ -178,7 +178,7 @@ points:
           row_net: P1
           column_net: P8
 
-  zones.thumb:
+  zones.thumb: # thumbs
     anchor:
       ref: matrix_index_bottom
       shift: [thumb_shiftx, thumb_shifty]
@@ -199,14 +199,14 @@ points:
           origin: [0, adj + thumb_adj]
           splay: thumb_splay
           stagger: thumb_stagger
-          bind: [3j, q, j, 1kx]
+          bind: [2j, q, j, 1kx]
           row_net: P4
           column_net: P8
         key.mirror:
           row_net: P5
           column_net: P10
 
-  zones.reference_top_center:
+  zones.reference_top_center: # mcu ref
     anchor:
       aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
       shift: [0, mcu_y]
@@ -217,7 +217,7 @@ points:
     key:
       width: xiao_x
       height: xiao_y
-  zones.battery:
+  zones.battery: # battery pad
     mirror.$extends: points.zones.matrix.mirror
     key:
       width: 3.7
@@ -228,15 +228,22 @@ points:
     columns:
       bat.key:
         splay: 90
-        row_net: BAT_NEG
+        row_net: GND
         column_net: BAT_POS
-  zones.slider:
+  zones.slider: # slider switch
     key:
      width: 9.8
      height: 7.8
     anchor:
       ref: reference_top_center
       shift: [0, -xiao_y-3.9 - 1.5]
+  zones.reset: # reset switch
+    key:
+      width: 1
+      height: 1
+    anchor:
+      ref: reference_top_center
+      shift: [-xiao_x/4, -xiao_y-3.9 - 1.5]
 
 
   zones.mounting_hole_top:
@@ -275,7 +282,7 @@ outlines:
         where:
           - /matrix_.*/
           - /thumb_.*/
-    _center: # main block
+    _center: # main block, setup for substract
       - what: rectangle # rectangle around mcu
         where:
           ref: reference_top_center
@@ -289,36 +296,29 @@ outlines:
       - what: polygon # edge wedges, main shape
         points:
           - ref: matrix_index_bottom
-            shift: [-0.35kx, -0.4ky]
+            shift: [-0.55kx, -0.3ky]
           - ref: matrix_index_bottom
-            shift: [0.15kx, -0.6ky]
+            shift: [0.15kx, -0.65ky]
           - ref: thumb_tucky
             shift: [-0.62kx, 0.3ky]
           - ref: thumb_tucky
-            shift: [-0.43kx,-0.5ky]
+            shift: [-0.43kx,-0.45ky]
           - ref: thumb_reachy
             shift: [-0.5kx,-0.45ky]
           - ref: mirror_thumb_reachy
             shift: [-0.5kx, -0.45ky]
           - ref: mirror_thumb_tucky
-            shift: [-0.43kx,-0.5ky]
+            shift: [-0.43kx,-0.45ky]
           - ref: mirror_thumb_tucky
             shift: [-0.62kx, 0.3ky]
           - ref: mirror_matrix_index_bottom
-            shift: [0.15kx, -0.6ky]
+            shift: [0.15kx, -0.65ky]
           - ref: mirror_matrix_index_bottom
-            shift: [-0.35kx, -0.4ky]
-      - what: rectangle # sections to fillet
-        bound: true
-        size: switch
-        where:
-          - /matrix_inner_.*/ 
-          - /matrix_index_bottom/
-          - /matrix_middle_top/
-          - /thumb_.*/
-    _panel:
+            shift: [-0.55kx, -0.3ky]
+
+    _panel: # subtract curves from blocks
       - name: _center
-        fillet: 3
+        fillet: 2
       - operation: subtract
         what: circle # thumb curve
         where:
@@ -331,8 +331,8 @@ outlines:
           aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
           shift: [0, 0+curve2 + curve2_shift]
         radius: curve2
-      - _key_outline
-    panel:
+      - _key_outline # visual switch outline
+    panel: # pcb outline
       - name: _panel
         fillet: 2
     _switches:
@@ -353,12 +353,16 @@ outlines:
         size: [xiao_x, xiao_y]
     _battery:
       - what: rectangle
-        where: /battery_.*/
+        where: /mirror.battery_.*/
         size: [3.7, 2.75]
     _slider:
       - what: rectangle
         where: slider
         size: [9.6, 7.8]
+    _reset:
+      - what: rectangle
+        where: reset
+        size: [4, 4]
     _mounting_holes:
       - what: circle
         where:
@@ -378,18 +382,19 @@ outlines:
       - ^_mcu
       - ^_battery
       - ^_slider
+      - ^_reset
     switchplate:
       - panel
       - operation: subtract
         name: _switches
         fillet: 0.5
 pcbs:
-  metasepia_v4:
+  metasepia_v5:
     outlines:
       main:
         outline: panel
     footprints:
-      mx_hotswap:
+      mx_hotswap: # switches
         what: mx
         where:
           - /matrix_.*/
@@ -398,7 +403,7 @@ pcbs:
           hotswap: true
           from: "{{row_net}}"
           to: "{{diode}}"
-      diode:
+      diode: # keycaps
         what: diode
         where:
           - /matrix_.*/
@@ -409,21 +414,27 @@ pcbs:
         adjust:
           shift: [0, -4]
 
-      xiao:
+      xiao: # other components
         what: xiao
         where: mcu
       battery:
-        what: choc
-        where: /battery_.*/
+        what: jstph # was choc, test
+        where: /mirror_battery_.*/
         params:
-          from: "{{row_net}}"
-          to: slider
+          neg: GND
+          pos: slider
       slider:
         what: diode
         where: slider
         params:
           from: slider
           to: BAT_POS
+      reset:
+        what: button
+        where: reset
+        params:
+          from: RST
+          to: GND
   metasepia_switchplate:
     outlines:
       main:
