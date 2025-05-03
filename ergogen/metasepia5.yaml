@@ -402,14 +402,14 @@ pcbs:
         params:
           hotswap: true
           from: "{{row_net}}"
-          to: "{{diode}}"
-      diode: # keycaps
+          to: "{{colrow}}"
+      diode: # diodes
         what: diode
         where:
           - /matrix_.*/
           - /thumb_.*/
         params:
-          from: "{{diode}}"
+          from: "{{colrow}}"
           to: "{{column_net}}"
         adjust:
           shift: [0, -4]
@@ -418,13 +418,13 @@ pcbs:
         what: xiao
         where: mcu
       battery:
-        what: jstph # was choc, test
+        what: jstph
         where: /mirror_battery_.*/
         params:
           neg: GND
           pos: slider
       slider:
-        what: diode
+        what: jumper
         where: slider
         params:
           from: slider
