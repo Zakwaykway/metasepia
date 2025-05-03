@@ -397,14 +397,14 @@ pcbs:
         params:
           hotswap: true
           from: "{{row_net}}"
-          to: "{{diode}}"
+          to: "{{colrow}}"
       diode:
         what: diode
         where:
           - /matrix_.*/
           - /thumb_.*/
         params:
-          from: "{{diode}}"
+          from: "{{colrow}}"
           to: "{{column_net}}"
         adjust:
           shift: [0, -4]
