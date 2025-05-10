@@ -296,7 +296,7 @@ outlines:
       - what: polygon # edge wedges, main shape
         points:
           - ref: matrix_index_bottom
-            shift: [-0.55kx, -0.3ky]
+            shift: [-0.45kx, -0.3ky]
           - ref: matrix_index_bottom
             shift: [0.15kx, -0.65ky]
           - ref: thumb_tucky
@@ -314,11 +314,10 @@ outlines:
           - ref: mirror_matrix_index_bottom
             shift: [0.15kx, -0.65ky]
           - ref: mirror_matrix_index_bottom
-            shift: [-0.55kx, -0.3ky]
+            shift: [-0.45kx, -0.3ky]
 
     _panel: # subtract curves from blocks
       - name: _center
-        fillet: 2
       - operation: subtract
         what: circle # thumb curve
         where:
@@ -368,10 +367,10 @@ outlines:
         where:
           - /.*mounting_hole/
         radius: 2
-    _mcuhole:
+    _mcu_hole:
       - what: rectangle
         where: mcu
-        size: [xiao_x+4, 2xiao_y+8]
+        size: [xiao_x+4, 60]
         fillet: 4
     demo_switches:
       - panel
@@ -394,7 +393,7 @@ outlines:
         name: _switches
         fillet: 0.5
       - operation: subtract
-        name: _mcuhole
+        name: _mcu_hole
 pcbs:
   metasepia_v5:
     outlines:
@@ -446,3 +445,11 @@ pcbs:
     outlines:
       main:
         outline: switchplate
+    footprints:
+      main_logo: # metasepia
+        what: ceoloide/utility_text
+        where: mcu_hole
+        adjust:
+          shift: [0, -40]
+        params:
+          text: METASEPIA
