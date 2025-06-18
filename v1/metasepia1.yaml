@@ -1,0 +1,296 @@
+meta:
+  name: matesepia
+units:
+  capx: u
+  capy: u
+  kx: u
+  ky: u
+  pinky_splay: 5
+  pinky_adj: -0.55ky
+  ring_splay: 5
+  ring_adj: -0.55kx
+  middle_splay: 0
+  middle_adj: 0
+  thumb_shiftx: 0.97kx
+  thumb_shifty: -1.7ky
+  thumb_stagger: -5
+  angle: 32.5  # between halves
+  q: 0.05kx # extra room for footprints
+  j: 0.05ky
+
+  $default_height: 0 
+  $default_width: 0
+  xiao_x: 17.8
+  xiao_y: 21
+  sf: 16
+
+points:
+  zones.matrix:
+    anchor.shift: [125, -100]
+    rotate: -angle + pinky_splay + ring_splay
+    mirror:
+      ref: matrix_inner_top
+      shift: [0.5sf, 0.5sf]
+      distance: 13
+    key:
+      width: capx
+      height: capy
+      spread: kx      
+      padding: ky
+      autobind: 0
+    rows:
+      bottom:
+      home:
+      top:
+    columns.pinky:
+      rows:
+        top.skip: true
+        bottom:
+          bind: [0.5ky, q, j, q]
+          row_net: P2
+          column_net: P6
+        home:
+          bind: [j, 0.5kx, 0.22ky, q]
+          row_net: P0
+          column_net: P6
+        bottom.mirror:
+          row_net: P3
+          column_net: P10
+        home.mirror:
+          row_net: P1
+          column_net: P10
+    columns.ring:
+      key:
+        stagger: 0.75ky
+        splay: -pinky_splay
+        origin: [0, pinky_adj]
+      rows:
+        bottom:
+          bind: [j, q, j, 0.5kx]
+          row_net: P4
+          column_net: P6
+        home:
+          bind: [0.5ky, 0.5kx, 0.5ky, q]
+          row_net: P3
+          column_net: P6
+        top:
+          bind: [j, 1kx, 0.5ky, q]
+          row_net: P1
+          column_net: P6
+        bottom.mirror:
+          row_net: P5
+          column_net: P9
+        home.mirror:
+          row_net: P2
+          column_net: P10
+        top.mirror:
+          row_net: P0
+          column_net: P10
+    columns.middle:
+      key:
+        stagger: 0.19ky
+        splay: -ring_splay
+        origin: [0, ring_adj]
+      rows:
+        bottom:
+          bind: [0.5ky, 0.5kx, j, 0.5kx]
+          row_net: P5
+          column_net: P6
+        home:
+          bind: [0.5ky, 0.5kx, 0.5ky, 0.5kx]
+          row_net: P2
+          column_net: P7
+        top:
+          bind: [j, q, 0.5ky, q]
+          row_net: P0
+          column_net: P7
+        bottom.mirror:
+          row_net: P4
+          column_net: P9
+        home.mirror:
+          row_net: P3
+          column_net: P9
+        top.mirror:
+          row_net: P1
+          column_net: P9
+    columns.index:
+      key.stagger: -0.45ky
+      rows:
+        bottom:
+          bind: [0.5ky, q, j, q]
+          row_net: P4
+          column_net: P7
+        home:
+          row_net: P3
+          column_net: P7
+        top:
+          bind: [j, q, 0.5ky, 0.5kx]
+          row_net: P1
+          column_net: P7
+        bottom.mirror:
+          row_net: P5
+          column_net: P8
+        home.mirror:
+          row_net: P2
+          column_net: P9
+        top.mirror:
+          row_net: P0
+          column_net: P9
+    columns.inner:
+      key.stagger: -0.58ky
+      rows:
+        bottom.skip: true
+        home:
+          bind: [0.5ky, q, 0.25ky, 0.5kx]
+          row_net: P2
+          column_net: P8
+        top:
+          bind: [j, q, 0.5ky, 0.5kx]
+          row_net: P0
+          column_net: P8
+        home.mirror:
+          row_net: P3
+          column_net: P8
+        top.mirror:
+          row_net: P1
+          column_net: P8
+  zones.thumb:
+    anchor:
+      ref: matrix_index_bottom
+      shift: [thumb_shiftx, thumb_shifty]
+    mirror.$extends: points.zones.matrix.mirror
+    key.$extends: points.zones.matrix.key
+    columns:
+      tucky:
+        key:
+          bind: [j, 0.5kx, j, q]
+          row_net: P5
+          column_net: P7
+        key.mirror:
+          row_net: P4
+          column_net: P10
+      reachy:
+        key:
+          stagger: -0.25ky
+          bind: [1.5ky, q, j, q]
+          row_net: P4
+          column_net: P8
+        key.mirror:
+          row_net: P5
+          column_net: P10
+  zones.reference_top_center:
+    anchor:
+      aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+      shift: [0, -0.65ky]
+  zones.mcu:
+    anchor:
+      ref: reference_top_center
+      shift: [0, -0.5xiao_y]
+    key:
+      width: xiao_x
+      height: xiao_y
+  zones.mounting_hole:
+    anchor:
+      ref: matrix_inner_home
+      shift: [-0.47kx, -0.5ky]
+    mirror.$extends: points.zones.matrix.mirror
+    key:
+      width: 1
+      height: 1
+outlines:
+    _key_outline:
+      - what: rectangle
+        bound: true
+        size: sf
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+    _center: # main block
+      - what: rectangle
+        where:
+          ref: reference_top_center
+          shift: [0, -1.5ky]
+        size: [3.21kx, 3ky]
+      - what: rectangle
+        bound: true
+        size: sf
+        where: /matrix_inner_.*/  # Include the inner keys in addition to the center polygon 
+    _panel:
+      - name: _center
+        fillet: 3  # The inner rounding where the glue meets the top center keys
+      - operation: subtract
+        what: circle
+        where:
+          aggregate.parts: [thumb_reachy, mirror_thumb_reachy]
+          shift: [0, 0.5sf - 55]
+        radius: 55  # Should be the same as the last number in `shift` above
+      - _key_outline
+    panel:
+      - name: _panel
+        fillet: 2
+    _switches:
+      - what: rectangle
+        size: 14
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+    _keycaps:
+      - what: rectangle
+        size: [capx, capy]
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+    _mcu:
+      - what: rectangle
+        where: mcu
+        size: [xiao_x, xiao_y]
+    _mounting_holes:
+      - what: circle
+        where: /.*mounting_hole/
+        radius: 1
+    demo_switches:
+      - panel
+      - ^_switches
+      - ^_mcu
+      - ^_mounting_holes
+    demo_keycaps:
+      - panel
+      - ^_keycaps
+      - ^_mcu
+      - ^_mounting_holes
+    switchplate:
+      - panel
+      - operation: subtract
+        name: _switches
+        fillet: 0.5
+pcbs:
+  matesepia:
+    outlines:
+      main:
+        outline: panel
+    footprints:
+      mx_hotswap:
+        what: mx
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+        params:
+          hotswap: true
+          from: "{{row_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+        params:
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+        adjust:
+          shift: [0, -5]
+      mounting_holes:
+         what: mountinghole
+         where: /.*mounting_hole/
+      xiao:
+          what: xiao
+          where: mcu

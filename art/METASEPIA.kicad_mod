@@ -1,0 +1,112 @@
+(footprint "METASEPIA"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "53118c6d-703a-4ebb-bcc5-9424c0407e18")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Untitled"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6534febb-3271-4672-9e85-913629a1086b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ee2ce999-f52f-4b7f-a0f3-1039c21d5654")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3c2874fc-c39e-4f9c-b9cb-c9dafde1280f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd exclude_from_pos_files)
+	(fp_text user "BY ZAKWAYKWAY"
+		(at 0 2.4 0)
+		(unlocked yes)
+		(layer "F.Cu")
+		(uuid "41cd705b-f51b-408f-8210-9c0927950532")
+		(effects
+			(font
+				(size 0.888 1)
+				(thickness 0.3)
+				(bold yes)
+			)
+		)
+	)
+	(fp_text user "METASEPIA"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Cu")
+		(uuid "89f6f7a4-361f-4df0-9902-874baa00617e")
+		(effects
+			(font
+				(size 1.667 2)
+				(thickness 0.475)
+				(bold yes)
+			)
+		)
+	)
+	(fp_text user "BY ZAKWAYKWAY"
+		(at 0 2.4 0)
+		(unlocked yes)
+		(layer "F.Mask")
+		(uuid "013cf2b9-f0fb-4a88-812b-7905182db471")
+		(effects
+			(font
+				(size 0.888 1)
+				(thickness 0.2)
+				(bold yes)
+			)
+		)
+	)
+	(fp_text user "METASEPIA"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Mask")
+		(uuid "9d6cc32a-d827-4a18-808d-03feed119a60")
+		(effects
+			(font
+				(size 1.667 2)
+				(thickness 0.367)
+				(bold yes)
+			)
+		)
+	)
+	(embedded_fonts no)
+)
