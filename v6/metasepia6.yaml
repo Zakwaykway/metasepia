@@ -41,7 +41,7 @@ units:
 
 points:
   zones.matrix: 
-    anchor.shift: [125, -100]
+    anchor.shift: [105, -80]
     rotate: -angle + pinky_splay + ring_splay + middle_splay
     mirror:
       ref: matrix_inner_top
