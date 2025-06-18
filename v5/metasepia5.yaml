@@ -1,5 +1,9 @@
 meta:
+  engine: 4.0.0
   name: metasepia_v5
+  author: zakwaykway
+  url: https://github.com/zakwaykway/metasepia
+  
 units:
   capx: u-0.5
   capy: u-0.5

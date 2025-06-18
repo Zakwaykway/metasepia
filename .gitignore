@@ -1,6 +1,7 @@
 **/.DS_Store
 /kicad/**/*-backups/
 /kicad/**/fp-info-cache
+/kicad/**/*.json
 *.lck
 *.kicad_prl
 BOM
