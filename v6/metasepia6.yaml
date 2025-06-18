@@ -1,0 +1,417 @@
+meta:
+  engine: 4.1.0
+  name: metasepia_v6
+  author: zakwaykway
+  url: https://github.com/zakwaykway/metasepia
+  
+units:
+  capx: u-1 # kc size
+  capy: u-1
+  kx: u # spacing
+  ky: u
+  adj: -0.45ky # offset for splayed cols
+  xiao_x: 19 # xiao measurements
+  xiao_y: 21
+  $default_height: 0
+  $default_width: 0
+  switch: 16 # switch size
+  b: 0.05kx # bind for edges
+
+  spacing: xiao_x - 2.5
+  angle: 31  # between halves
+  curve: 55 + spacing
+  curve_shift: 5
+  center_block: 4kx # mid width
+  mcu_y: 20 # mcu height from curve
+
+  pinky_splay: 6
+  ring_stagger: 0.6ky
+  ring_splay: 3
+  middle_stagger: 0.2ky
+  middle_splay: 0
+  index_stagger: -0.5ky
+  inner_stagger: -0.4ky
+  thumb_stagger: -0.2ky
+  thumb_base_angle: -14
+  thumb_splay: -12
+  thumb_adj: 1
+  thumb_shiftx: 0.7kx
+  thumb_shifty: -1.35ky
+
+
+points:
+  zones.matrix: 
+    anchor.shift: [125, -100]
+    rotate: -angle + pinky_splay + ring_splay + middle_splay
+    mirror:
+      ref: matrix_inner_top
+      shift: [0.5kx, 0.5kx]
+      distance: spacing
+    key:
+      width: capx
+      height: capy
+      spread: kx
+      padding: ky
+      autobind: 0
+    rows:
+      bottom:
+      home:
+      top:
+    columns.pinky:
+      rows:
+        bottom: 
+          bind: [0.5ky, b, 0, b]
+          row_net: P0
+          column_net: P6
+        home:
+          bind: [0.5ky, 0.5kx, 0, b]
+          row_net: P2
+          column_net: P6
+        top:
+          bind: [0, 0.5kx, 0.5ky, b]
+          row_net: P0
+          column_net: P6
+        bottom.mirror:
+          row_net: P0
+          column_net: P6
+        home.mirror:
+          row_net: P3
+          column_net: P10
+        top.mirror:
+          row_net: P1
+          column_net: P10
+    columns.ring:
+      key:
+        stagger: ring_stagger
+        splay: -pinky_splay
+        origin: [0, adj]
+      rows:
+        bottom:
+          bind: [0.5ky, 0, 0, 0.5kx]
+          row_net: P4
+          column_net: P6
+        home:
+          bind: [0.5ky, 0.5kx, 0.5ky, 0]
+          row_net: P3
+          column_net: P6
+        top:
+          bind: [0, 1kx, 0.5ky, b]
+          row_net: P1
+          column_net: P6
+        bottom.mirror:
+          row_net: P5
+          column_net: P9
+        home.mirror:
+          row_net: P2
+          column_net: P10
+        top.mirror:
+          row_net: P0
+          column_net: P10
+    columns.middle:
+      key:
+        stagger: middle_stagger
+        splay: -ring_splay
+        origin: [0, adj]
+      rows:
+        bottom:
+          bind: [0.5ky, 0.5kx, 0, 0.5kx]
+          row_net: P5
+          column_net: P6
+        home:
+          bind: [0.5ky, 0.5kx, 0.5ky, 0.5kx]
+          row_net: P2
+          column_net: P7
+        top:
+          bind: [0, b, 0.5ky, b]
+          row_net: P0
+          column_net: P7
+        bottom.mirror:
+          row_net: P4
+          column_net: P9
+        home.mirror:
+          row_net: P3
+          column_net: P9
+        top.mirror:
+          row_net: P1
+          column_net: P9
+    columns.index:
+      key:
+        stagger: index_stagger
+        splay: -middle_splay
+      rows:
+        bottom:
+          bind: [0.5ky, 0.5kx, 0, b]
+          row_net: P4
+          column_net: P7
+        home:
+          row_net: P3
+          column_net: P7
+        top:
+          bind: [0, 0, 0.5ky, 0.5kx]
+          row_net: P1
+          column_net: P7
+        bottom.mirror:
+          row_net: P5
+          column_net: P8
+        home.mirror:
+          row_net: P2
+          column_net: P9
+        top.mirror:
+          row_net: P0
+          column_net: P9
+    columns.inner:
+      key.stagger: inner_stagger
+      rows:
+        bottom.skip: true
+        home:
+          bind: [0.5ky, 0, 0.25ky, 0.5kx]
+          row_net: P2
+          column_net: P8
+        top:
+          bind: [0, 0, 0.5ky, 0.5kx]
+          row_net: P0
+          column_net: P8
+        home.mirror:
+          row_net: P3
+          column_net: P8
+        top.mirror:
+          row_net: P1
+          column_net: P8
+
+  zones.thumb: # thumbs
+    anchor:
+      ref: matrix_index_bottom
+      shift: [thumb_shiftx, thumb_shifty]
+    mirror.$extends: points.zones.matrix.mirror
+    key.$extends: points.zones.matrix.key
+    columns:
+      tucky:
+        key:
+          splay: thumb_base_angle
+          bind: [1.5ky, b, 0, b]
+          row_net: P5
+          column_net: P7
+        key.mirror:
+          row_net: P4
+          column_net: P10
+      reachy:
+        key:
+          origin: [0, adj + thumb_adj]
+          splay: thumb_splay
+          stagger: thumb_stagger
+          bind: [0, b, 0, 1kx]
+          row_net: P4
+          column_net: P8
+        key.mirror:
+          row_net: P5
+          column_net: P10
+
+  zones.reference_top_center: # mcu ref
+    anchor:
+      aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+      shift: [0, mcu_y]
+  zones.mcu:
+    anchor:
+      ref: reference_top_center
+      shift: [0, -0.5xiao_y]
+    key:
+      width: xiao_x
+      height: xiao_y
+  zones.battery: # battery pad
+    mirror.$extends: points.zones.matrix.mirror
+    key:
+      width: 1
+      height: 1
+    anchor:
+      aggregate.parts: [matrix_inner_top, thumb_reachy]
+      shift: [8, 2]
+    columns:
+      bat.key:
+        splay: 155
+        row_net: GND
+        column_net: BAT_POS
+  zones.slider: # slider switch
+    key:
+     width: 9.6
+     height: 7.6
+    anchor:
+      ref: reference_top_center
+      shift: [-xiao_x/2-9.8/2- 2, -7.6/2- 1]
+  zones.reset: # reset switch
+    key:
+      width: 8
+      height: 4.9
+    anchor:
+      ref: reference_top_center
+      shift: [xiao_x/2+8/2+ 1.5, -4.9/2- 1]
+
+
+outlines:
+    _key_outline:
+      - what: rectangle
+        bound: true
+        size: switch
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+    _center: # main block, setup for substract
+      - what: rectangle # rectangle around mcu
+        where:
+          ref: reference_top_center
+          shift: [0, -1ky-0.5mcu_y]
+        size: [3.65kx+spacing, 2ky+mcu_y]
+      - what: rectangle # block for curve
+        where: 
+          aggregate.parts: [thumb_reachy, mirror_thumb_reachy, matrix_index_bottom, mirror_matrix_index_bottom]
+          shift: [0, 0.3ky+0.5mcu_y]
+        size: [center_block+spacing, 2.5ky+mcu_y]
+      - what: polygon # edge wedges, main shape
+        points:
+          - ref: matrix_index_bottom
+            shift: [-0.4kx, -0.3ky]
+          - ref: matrix_index_bottom
+            shift: [0.15kx, -0.65ky]
+          - ref: thumb_tucky
+            shift: [-0.62kx, 0.3ky]
+          - ref: thumb_tucky
+            shift: [-0.43kx,-0.45ky]
+          - ref: thumb_reachy
+            shift: [-0.5kx,-0.45ky]
+          - ref: mirror_thumb_reachy
+            shift: [-0.5kx, -0.45ky]
+          - ref: mirror_thumb_tucky
+            shift: [-0.43kx,-0.45ky]
+          - ref: mirror_thumb_tucky
+            shift: [-0.62kx, 0.3ky]
+          - ref: mirror_matrix_index_bottom
+            shift: [0.15kx, -0.65ky]
+          - ref: mirror_matrix_index_bottom
+            shift: [-0.45kx, -0.3ky]
+
+    _panel: # subtract curves from blocks
+      - name: _center
+      - operation: subtract
+        what: circle # thumb curve
+        where:
+          aggregate.parts: [thumb_reachy, mirror_thumb_reachy, thumb_tucky, mirror_thumb_tucky]
+          shift: [0, -curve + 0.5curve_shift +15]
+        radius: curve
+      - _key_outline # visual switch outline
+    panel: # pcb outline
+      - name: _panel
+        fillet: 2
+    _switches:
+      - what: rectangle
+        size: 14
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+    _keycaps:
+      - what: rectangle
+        size: [capx, capy]
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+    _mcu:
+      - what: rectangle
+        where: mcu
+        size: [xiao_x, xiao_y]
+    _battery:
+      - what: rectangle
+        where: /mirror.battery_.*/
+        size: [6, 12]
+    _slider:
+      - what: rectangle
+        where: slider
+        size: [9.6, 7.6]
+    _reset:
+      - what: rectangle
+        where: reset
+        size: [8, 4.9]
+    _mcu_hole:
+      - what: rectangle
+        where: mcu
+        size: [xiao_x+4, 60]
+        fillet: 4
+    demo_switches:
+      - panel
+      - ^_switches
+      - ^_mcu
+    demo_keycaps:
+      - panel
+      - ^_keycaps
+      - ^_mcu
+    demo_pcb:
+      - panel
+      - ^_switches
+      - ^_mcu
+      - ^_battery
+      - ^_slider
+      - ^_reset
+    switchplate:
+      - panel
+      - operation: subtract
+        name: _switches
+        fillet: 0.5
+      - operation: subtract
+        name: _mcu_hole
+pcbs:
+  metasepia_v6:
+    outlines:
+      main:
+        outline: panel
+    footprints:
+      mx_hotswap: # switches
+        what: ceoloide/switch_mx
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+        params:
+          from: "{{row_net}}"
+          to: "{{colrow}}"
+
+      diode: # diodes
+        what: ceoloide/diode_tht_sod123
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+        params:
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+        adjust:
+          shift: [0, -4]
+
+      xiao: # other components
+        what: xiao
+        where: mcu
+      battery:
+        what: ceoloide/battery_connector_jst_ph_2
+        where: /mirror_battery_.*/
+        params:
+          BAT_N: GND
+          BAT_P: slider
+          reversible: true
+      slider:
+        what: jumper
+        where: slider
+        params:
+          from: slider
+          to: BAT_POS
+      reset:
+        what: button
+        where: reset
+        params:
+          from: RST
+          to: GND
+  metasepia_switchplate:
+    outlines:
+      main:
+        outline: switchplate
+    footprints:
+      main_logo: # metasepia
+        what: ceoloide/utility_text
+        where: mcu_hole
+        adjust:
+          shift: [0, -40]
+        params:
+          text: METASEPIA
