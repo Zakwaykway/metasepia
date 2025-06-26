@@ -1,6 +1,6 @@
 meta:
   engine: 4.1.0
-  name: metasepia_v7
+  name: metasepia_v6
   author: zakwaykway
   url: https://github.com/zakwaykway/metasepia
   
@@ -225,7 +225,6 @@ points:
       ref: reference_top_center
       shift: [0, -4.9/2- 1]
 
-
 outlines:
     _key_outline:
       - what: rectangle
@@ -303,7 +302,7 @@ outlines:
     _mcu_hole:
       - what: rectangle
         where: mcu
-        size: [xiao_x+4, 60]
+        size: [xiao_x+4, 40]
         fillet: 4
     demo_switches:
       - panel
@@ -326,7 +325,7 @@ outlines:
       - operation: subtract
         name: _mcu_hole
 pcbs:
-  metasepia_v7:
+  metasepia_v6:
     outlines:
       main:
         outline: panel
