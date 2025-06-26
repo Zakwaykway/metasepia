@@ -1,6 +1,6 @@
 meta:
   engine: 4.1.0
-  name: metasepia_v6
+  name: metasepia_v7
   author: zakwaykway
   url: https://github.com/zakwaykway/metasepia
   
@@ -41,7 +41,7 @@ units:
 
 points:
   zones.matrix: 
-    anchor.shift: [105, -80]
+    anchor.shift: [90, -70]
     rotate: -angle + pinky_splay + ring_splay + middle_splay
     mirror:
       ref: matrix_inner_top
@@ -223,7 +223,7 @@ points:
       height: 4.9
     anchor:
       ref: reference_top_center
-      shift: [xiao_x/2+8/2+ 1.5, -4.9/2- 1]
+      shift: [0, -4.9/2- 1]
 
 
 outlines:
@@ -296,14 +296,6 @@ outlines:
       - what: rectangle
         where: mcu
         size: [xiao_x, xiao_y]
-    _battery:
-      - what: rectangle
-        where: /mirror.battery_.*/
-        size: [6, 12]
-    _slider:
-      - what: rectangle
-        where: slider
-        size: [9.6, 7.6]
     _reset:
       - what: rectangle
         where: reset
@@ -334,7 +326,7 @@ outlines:
       - operation: subtract
         name: _mcu_hole
 pcbs:
-  metasepia_v6:
+  metasepia_v7:
     outlines:
       main:
         outline: panel
@@ -368,6 +360,7 @@ pcbs:
         params:
           from: RST
           to: GND
+          side: B
   metasepia_switchplate:
     outlines:
       main:
