@@ -67,8 +67,8 @@ module.exports = {
 
       (pad "15" thru_hole circle (at -1.27 -8.572 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.SWCLK.str})
       (pad "16" thru_hole circle (at 1.27 -8.572 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.SWDIO.str})
-      (pad "17" thru_hole circle (at -1.27 -6.032 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.GND.str})
-      (pad "18" thru_hole circle (at 1.27 -6.032 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.RST.str})
+      (pad "17" thru_hole circle (at -1.27 -6.032 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.RST.str})
+      (pad "18" thru_hole circle (at 1.27 -6.032 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.GND.str})
 
       (pad "19" thru_hole circle (at -4.445 -0.317 ${p.rot + 180}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.BAT_POS.str})
       (pad "20" thru_hole circle (at -4.445 -2.222 ${p.rot + 180}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.BAT_NEG.str})
