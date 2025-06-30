@@ -5,8 +5,8 @@ meta:
   url: https://github.com/zakwaykway/metasepia
   
 units:
-  capx: u-1 # kc size
-  capy: u-1
+  capx: u-0.5 # kc size
+  capy: u-0.5
   kx: u # spacing
   ky: u
   adj: -0.45ky # offset for splayed cols
@@ -267,6 +267,24 @@ outlines:
           - ref: mirror_matrix_index_bottom
             shift: [-0.45kx, -0.3ky]
 
+    _breakoff_col_holes:
+      # vert bot
+      - what: rectangle
+        operation: stack
+        fillet: 0.5
+        size: [1, 15]
+        where: /_.*pinky_bottom/
+        adjust: 
+          shift: [0.5kx, 0.5ky]
+      # horiz bot
+      - what: rectangle
+        operation: stack
+        fillet: 0.5
+        size: [15, 1]
+        where: /_.*pinky_bottom/
+        adjust: 
+          shift: [0, 0.5ky]
+
     _panel: # subtract curves from blocks
       - name: _center
       - operation: subtract
@@ -276,6 +294,9 @@ outlines:
           shift: [0, -curve + 0.5curve_shift +15]
         radius: curve
       - _key_outline # visual switch outline
+      - operation: subtract
+        name: _breakoff_col_holes
+
     panel: # pcb outline
       - name: _panel
         fillet: 2
@@ -324,6 +345,7 @@ outlines:
         fillet: 0.5
       - operation: subtract
         name: _mcu_hole
+
 pcbs:
   metasepia_v6:
     outlines:
