@@ -1,6 +1,6 @@
 meta:
   engine: 4.1.0
-  name: metasepia_v6
+  name: metasepia_v7
   author: zakwaykway
   url: https://github.com/zakwaykway/metasepia
   
@@ -114,7 +114,7 @@ points:
         origin: [0, adj]
       rows:
         bottom:
-          bind: [0.5ky, 0.5kx, 0, 0.5kx]
+          bind: [0.5ky, 0.5kx, middle_stagger+0.75, 0.5kx]
           row_net: P5
           column_net: P6
         home:
@@ -188,7 +188,7 @@ points:
       tucky:
         key:
           splay: thumb_base_angle
-          bind: [1.5ky, b, 0, b]
+          bind: [1.5ky, b, 0, 0]
           row_net: P5
           column_net: P7
         key.mirror:
@@ -246,36 +246,32 @@ outlines:
         size: [center_block+spacing, 2.5ky+mcu_y]
       - what: polygon # edge wedges, main shape
         points:
-          - ref: matrix_index_bottom
-            shift: [-0.4kx, -0.3ky]
-          - ref: matrix_index_bottom
-            shift: [0.15kx, -0.65ky]
+          - ref: matrix_ring_home
+            shift: [0, -0.5ky]
           - ref: thumb_tucky
-            shift: [-0.62kx, 0.3ky]
+            shift: [-1.0kx, 0.2ky]
           - ref: thumb_tucky
-            shift: [-0.43kx,-0.45ky]
-          - ref: thumb_reachy
-            shift: [-0.5kx,-0.45ky]
-          - ref: mirror_thumb_reachy
-            shift: [-0.5kx, -0.45ky]
+            shift: [-0.45kx,-0.44ky]
+          - ref: thumb_tucky
+            shift: [0.5kx,-0.44ky]
           - ref: mirror_thumb_tucky
-            shift: [-0.43kx,-0.45ky]
+            shift: [0.5kx,-0.44ky]
           - ref: mirror_thumb_tucky
-            shift: [-0.62kx, 0.3ky]
-          - ref: mirror_matrix_index_bottom
-            shift: [0.15kx, -0.65ky]
-          - ref: mirror_matrix_index_bottom
-            shift: [-0.45kx, -0.3ky]
+            shift: [-0.45kx, -0.44ky]
+          - ref: mirror_thumb_tucky
+            shift: [-1.0kx, 0.2ky]
+          - ref: mirror_matrix_ring_home
+            shift: [0, -0.5ky]
 
     _breakoff_col_holes:
       # vert bot
       - what: rectangle
         operation: stack
         fillet: 0.5
-        size: [1, 15]
+        size: [1, u/2+1]
         where: /_.*pinky_bottom/
         adjust: 
-          shift: [0.5kx, 0.5ky]
+          shift: [0.5kx, 0.5ky-4]
       # horiz bot
       - what: rectangle
         operation: stack
@@ -293,7 +289,7 @@ outlines:
           aggregate.parts: [thumb_reachy, mirror_thumb_reachy, thumb_tucky, mirror_thumb_tucky]
           shift: [0, -curve + 0.5curve_shift +15]
         radius: curve
-      - _key_outline # visual switch outline
+      - _key_outline # visual switch outline♦
       - operation: subtract
         name: _breakoff_col_holes
 
@@ -347,7 +343,7 @@ outlines:
         name: _mcu_hole
 
 pcbs:
-  metasepia_v6:
+  metasepia_v7:
     outlines:
       main:
         outline: panel
