@@ -30,13 +30,13 @@ units:
   middle_stagger: 0.2ky
   middle_splay: 0
   index_stagger: -0.5ky
-  inner_stagger: -0.4ky
+  inner_stagger: -0.35ky
   thumb_stagger: -0.2ky
   thumb_base_angle: -14
   thumb_splay: -12
   thumb_adj: 1
-  thumb_shiftx: 0.7kx
-  thumb_shifty: -1.35ky
+  thumb_shiftx: 0.45kx
+  thumb_shifty: -1.4ky
 
 
 points:
@@ -87,7 +87,7 @@ points:
         origin: [0, adj]
       rows:
         bottom:
-          bind: [0.5ky, 0, 0, 0.5kx]
+          bind: [0.5ky, b, 0, 0.5kx]
           row_net: P4
           column_net: P6
         home:
@@ -114,7 +114,7 @@ points:
         origin: [0, adj]
       rows:
         bottom:
-          bind: [0.5ky, 0.5kx, middle_stagger+0.75, 0.5kx]
+          bind: [0.5ky, 0.5kx, 0, 0.5kx]
           row_net: P5
           column_net: P6
         home:
@@ -188,7 +188,7 @@ points:
       tucky:
         key:
           splay: thumb_base_angle
-          bind: [1.5ky, b, 0, 0]
+          bind: [ky, 0, 0, 0]
           row_net: P5
           column_net: P7
         key.mirror:
@@ -199,7 +199,7 @@ points:
           origin: [0, adj + thumb_adj]
           splay: thumb_splay
           stagger: thumb_stagger
-          bind: [0, b, 0, 1kx]
+          bind: [b, b, b, kx]
           row_net: P4
           column_net: P8
         key.mirror:
@@ -223,7 +223,7 @@ points:
       height: 4.9
     anchor:
       ref: reference_top_center
-      shift: [0, -4.9/2- 1]
+      shift: [0, -4.9/2- 6]
 
 outlines:
     _key_outline:
@@ -246,32 +246,36 @@ outlines:
         size: [center_block+spacing, 2.5ky+mcu_y]
       - what: polygon # edge wedges, main shape
         points:
-          - ref: matrix_ring_home
-            shift: [0, -0.5ky]
+          - ref: matrix_index_bottom
+            shift: [-0.4kx, -0.3ky]
+          - ref: matrix_index_bottom
+            shift: [0.15kx, -0.65ky]
           - ref: thumb_tucky
-            shift: [-1.0kx, 0.2ky]
+            shift: [-0.62kx, 0.3ky]
           - ref: thumb_tucky
-            shift: [-0.45kx,-0.44ky]
-          - ref: thumb_tucky
-            shift: [0.5kx,-0.44ky]
+            shift: [-0.43kx,-0.45ky]
+          - ref: thumb_reachy
+            shift: [-1.1kx,-0.45ky]
+          - ref: mirror_thumb_reachy
+            shift: [-0.5kx, -0.45ky]
           - ref: mirror_thumb_tucky
-            shift: [0.5kx,-0.44ky]
+            shift: [-0.43kx,-0.45ky]
           - ref: mirror_thumb_tucky
-            shift: [-0.45kx, -0.44ky]
-          - ref: mirror_thumb_tucky
-            shift: [-1.0kx, 0.2ky]
-          - ref: mirror_matrix_ring_home
-            shift: [0, -0.5ky]
+            shift: [-0.62kx, 0.3ky]
+          - ref: mirror_matrix_index_bottom
+            shift: [0.15kx, -0.65ky]
+          - ref: mirror_matrix_index_bottom
+            shift: [-0.45kx, -0.3ky]
 
     _breakoff_col_holes:
       # vert bot
       - what: rectangle
         operation: stack
         fillet: 0.5
-        size: [1, u/2+1]
+        size: [1.1, 11]
         where: /_.*pinky_bottom/
         adjust: 
-          shift: [0.5kx, 0.5ky-4]
+          shift: [0.5kx, 0.5ky -4]
       # horiz bot
       - what: rectangle
         operation: stack
@@ -289,13 +293,13 @@ outlines:
           aggregate.parts: [thumb_reachy, mirror_thumb_reachy, thumb_tucky, mirror_thumb_tucky]
           shift: [0, -curve + 0.5curve_shift +15]
         radius: curve
-      - _key_outline # visual switch outline♦
+      - _key_outline # visual switch outline
       - operation: subtract
         name: _breakoff_col_holes
 
     panel: # pcb outline
       - name: _panel
-        fillet: 2
+        fillet: 1.5
     _switches:
       - what: rectangle
         size: 14
@@ -319,8 +323,8 @@ outlines:
     _mcu_hole:
       - what: rectangle
         where: mcu
-        size: [xiao_x+4, 40]
-        fillet: 4
+        size: [xiao_x+7, xiao_y+7]
+        fillet: 3
     demo_switches:
       - panel
       - ^_switches
@@ -331,9 +335,14 @@ outlines:
       - ^_mcu
     demo_pcb:
       - panel
+      - ^_mcu
+      - ^_reset
+    demo_plate:
+      - panel
       - ^_switches
       - ^_mcu
       - ^_reset
+      - ^_mcu_hole
     switchplate:
       - panel
       - operation: subtract
@@ -341,6 +350,7 @@ outlines:
         fillet: 0.5
       - operation: subtract
         name: _mcu_hole
+        fillet: 1
 
 pcbs:
   metasepia_v7:
@@ -366,7 +376,7 @@ pcbs:
           from: "{{colrow}}"
           to: "{{column_net}}"
         adjust:
-          shift: [0, -4]
+          shift: [0, -5]
 
       xiao: # other components
         what: xiao
