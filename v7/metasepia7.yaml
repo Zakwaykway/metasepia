@@ -18,14 +18,14 @@ units:
   b: 0.05kx # bind for edges
 
   spacing: xiao_x - 2.5
-  angle: 31  # between halves
+  angle: 32  # between halves
   curve: 55 + spacing
   curve_shift: 5
   center_block: 4kx # mid width
   mcu_y: 20 # mcu height from curve
 
   pinky_splay: 6
-  ring_stagger: 0.6ky
+  ring_stagger: 0.65ky
   ring_splay: 3
   middle_stagger: 0.25ky
   middle_splay: 0
@@ -33,7 +33,7 @@ units:
   inner_stagger: -0.35ky
   thumb_stagger: -0.2ky
   thumb_base_angle: -14
-  thumb_splay: -12
+  thumb_splay: -10
   thumb_adj: 1
   thumb_shiftx: 0.45kx
   thumb_shifty: -1.4ky
@@ -85,7 +85,6 @@ points:
       key:
         stagger: ring_stagger
         splay: -pinky_splay
-        origin: [0, adj]
       rows:
         bottom:
           bind: [0.5ky, 1.5kx, 0, 0.5kx]
@@ -122,7 +121,7 @@ points:
           row_net: P2
           column_net: P7
         top:
-          bind: [0, b, 0.5ky, b]
+          bind: [b, b, 0.5ky, b]
           row_net: P0
           column_net: P7
         bottom.mirror:
@@ -199,7 +198,7 @@ points:
           origin: [0, adj + thumb_adj]
           splay: thumb_splay
           stagger: thumb_stagger
-          bind: [b, b, b, kx]
+          bind: [b+1, b, b, kx]
           row_net: P4
           column_net: P8
         key.mirror:
@@ -267,14 +266,12 @@ outlines:
     _breakoff_col_holes:
       # vert bot
       - what: rectangle
-        operation: stack
         size: [1.1, 11]
         where: /_.*pinky_bottom/
         adjust: 
           shift: [0.5kx, 0.5ky -4]
       # horiz bot
       - what: rectangle
-        operation: stack
         size: [15, 1]
         where: /_.*pinky_bottom/
         adjust: 
@@ -294,13 +291,14 @@ outlines:
 
     panel: # pcb outline
       - name: _panel
-        fillet: 1.5
+        fillet: 0
     _switches:
       - what: rectangle
         size: 14
         where:
           - /matrix_.*/
           - /thumb_.*/
+        corner: 0.5
     _keycaps:
       - what: rectangle
         size: [capx, capy]
@@ -311,41 +309,38 @@ outlines:
       - what: rectangle
         where: mcu
         size: [xiao_x, xiao_y]
-    _reset:
-      - what: rectangle
-        where: reset
-        size: [8, 4.9]
     _mcu_hole:
       - what: rectangle
         where: mcu
         size: [xiao_x+7, xiao_y+7]
-        fillet: 3
-    demo_switches:
-      - panel
+        fillet: 0
+      - what: rectangle
+        operation: add
+        where: mcu
+        adjust.shift: [0,-xiao_y/2]
+        size: [xiao_x+17,11]
+    _reset:
+      - what: rectangle
+        where: reset
+        size: [8, 4.9]
+    debug:
+      - ^panel
       - ^_switches
+      - ^_mcu_hole
       - ^_mcu
-    demo_keycaps:
+      - ^_reset
+      - ^_reset
+    top_view:
       - panel
       - ^_keycaps
       - ^_mcu
-    demo_pcb:
-      - panel
-      - ^_mcu
-      - ^_reset
-    demo_plate:
-      - panel
-      - ^_switches
-      - ^_mcu
-      - ^_reset
-      - ^_mcu_hole
     switchplate:
-      - panel
-      - operation: subtract
-        name: _switches
-        fillet: 0.5
+      - name: panel
+        fillet: 2.75
+      - -_switches
       - operation: subtract
         name: _mcu_hole
-        fillet: 1
+        fillet: 1.75
 
 pcbs:
   metasepia_v7:
