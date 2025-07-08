@@ -27,7 +27,7 @@ units:
   pinky_splay: 6
   ring_stagger: 0.6ky
   ring_splay: 3
-  middle_stagger: 0.2ky
+  middle_stagger: 0.25ky
   middle_splay: 0
   index_stagger: -0.5ky
   inner_stagger: -0.35ky
@@ -53,6 +53,7 @@ points:
       spread: kx
       padding: ky
       autobind: 0
+      origin: [-kx/2,-ky/2]
     rows:
       bottom:
       home:
@@ -87,7 +88,7 @@ points:
         origin: [0, adj]
       rows:
         bottom:
-          bind: [0.5ky, b, 0, 0.5kx]
+          bind: [0.5ky, 1.5kx, 0, 0.5kx]
           row_net: P4
           column_net: P6
         home:
@@ -111,7 +112,6 @@ points:
       key:
         stagger: middle_stagger
         splay: -ring_splay
-        origin: [0, adj]
       rows:
         bottom:
           bind: [0.5ky, 0.5kx, 0, 0.5kx]
@@ -246,32 +246,28 @@ outlines:
         size: [center_block+spacing, 2.5ky+mcu_y]
       - what: polygon # edge wedges, main shape
         points:
-          - ref: matrix_index_bottom
-            shift: [-0.4kx, -0.3ky]
-          - ref: matrix_index_bottom
-            shift: [0.15kx, -0.65ky]
+          - ref: matrix_ring_bottom
+            shift: [-1.3kx, -0.5ky]
+          - ref: matrix_ring_bottom
+            shift: [1.3kx, -0.5ky]
           - ref: thumb_tucky
-            shift: [-0.62kx, 0.3ky]
-          - ref: thumb_tucky
-            shift: [-0.43kx,-0.45ky]
+            shift: [-0.45kx, -0.43ky]
           - ref: thumb_reachy
-            shift: [-1.1kx,-0.45ky]
+            shift: [-1.1kx, -0.45ky]
           - ref: mirror_thumb_reachy
-            shift: [-0.5kx, -0.45ky]
+            shift: [-1.1kx, -0.45ky]
           - ref: mirror_thumb_tucky
-            shift: [-0.43kx,-0.45ky]
-          - ref: mirror_thumb_tucky
-            shift: [-0.62kx, 0.3ky]
-          - ref: mirror_matrix_index_bottom
-            shift: [0.15kx, -0.65ky]
-          - ref: mirror_matrix_index_bottom
-            shift: [-0.45kx, -0.3ky]
+            shift: [-0.45kx, -0.43ky]
+          - ref: mirror_matrix_ring_bottom
+            shift: [1.3kx, -0.5ky]
+          - ref: mirror_matrix_ring_bottom
+            shift: [-1.3kx, -0.5ky]
+        fillet: 30
 
     _breakoff_col_holes:
       # vert bot
       - what: rectangle
         operation: stack
-        fillet: 0.5
         size: [1.1, 11]
         where: /_.*pinky_bottom/
         adjust: 
@@ -279,7 +275,6 @@ outlines:
       # horiz bot
       - what: rectangle
         operation: stack
-        fillet: 0.5
         size: [15, 1]
         where: /_.*pinky_bottom/
         adjust: 
