@@ -5,7 +5,7 @@ meta:
   url: https://github.com/zakwaykway/metasepia
   
 units:
-  capx: u-0.5 # kc size
+  capx: u-0.5 # kc visual size
   capy: u-0.5
   kx: u # spacing
   ky: u
@@ -15,13 +15,13 @@ units:
   $default_height: 0
   $default_width: 0
   switch: 16 # switch size
-  b: 0.05kx # bind for edges
+  b: 0.05kx # bind for drc
 
   spacing: xiao_x - 0.
-  angle: 32  # between halves
-  curve: 55 + spacing
-  curve_shift: 5
-  center_block: 4kx # mid width
+  angle: 30  # between halves
+  curve: 70 + spacing
+  curve_shift: -12
+  center_block: 5.5kx # mid width
   mcu_y: 20 # mcu height from curve
 
   pinky_splay: 6
@@ -31,12 +31,12 @@ units:
   middle_splay: 0
   index_stagger: -0.5ky
   inner_stagger: -0.35ky
-  thumb_stagger: -0.2ky
   thumb_base_angle: -14
-  thumb_splay: -10
-  thumb_adj: 1
-  thumb_shiftx: 0.45kx
-  thumb_shifty: -1.4ky
+  thumb_splay: -8
+  thumb_adj: 2
+  thumb_stagger: -0.2ky
+  thumb_shiftx: 0.1kx
+  thumb_shifty: -1.35ky
 
 
 points:
@@ -73,8 +73,8 @@ points:
           row_net: P0
           column_net: P6
         bottom.mirror:
-          row_net: P0
-          column_net: P6
+          row_net: P1
+          column_net: P10
         home.mirror:
           row_net: P3
           column_net: P10
@@ -187,7 +187,7 @@ points:
       tucky:
         key:
           splay: thumb_base_angle
-          bind: [ky, 0, 0, 0]
+          bind: [ky, b, b, 0]
           row_net: P5
           column_net: P7
         key.mirror:
@@ -198,7 +198,7 @@ points:
           origin: [0, adj + thumb_adj]
           splay: thumb_splay
           stagger: thumb_stagger
-          bind: [b+1, b, b, kx]
+          bind: [0, b, 0, kx]
           row_net: P4
           column_net: P8
         key.mirror:
@@ -222,7 +222,7 @@ points:
       height: 4.9
     anchor:
       ref: reference_top_center
-      shift: [0, -4.9/2- 7]
+      shift: [1.5, -4.9/2- 7]
 
 outlines:
     _key_outline:
@@ -233,7 +233,7 @@ outlines:
           - /matrix_.*/
           - /thumb_.*/
     _center: # main block, setup for substract
-      - what: rectangle # rectangle around mcu
+      - what: rectangle # mcu
         where:
           ref: reference_top_center
           shift: [0, -1ky-0.5mcu_y]
@@ -242,7 +242,7 @@ outlines:
         where: 
           aggregate.parts: [thumb_reachy, mirror_thumb_reachy, matrix_index_bottom, mirror_matrix_index_bottom]
           shift: [0, 0.3ky+0.5mcu_y]
-        size: [center_block+spacing, 2.5ky+mcu_y]
+        size: [center_block+spacing, 3ky+mcu_y]
       - what: polygon # edge wedges, main shape
         points:
           - ref: matrix_ring_bottom
@@ -250,13 +250,13 @@ outlines:
           - ref: matrix_ring_bottom
             shift: [1.3kx, -0.5ky]
           - ref: thumb_tucky
-            shift: [-0.45kx, -0.43ky]
-          - ref: thumb_reachy
-            shift: [-1.1kx, -0.45ky]
-          - ref: mirror_thumb_reachy
-            shift: [-1.1kx, -0.45ky]
+            shift: [-0.45kx, -0.5ky]
+          - ref: thumb_tucky
+            shift: [0.3kx, -0.5ky]
           - ref: mirror_thumb_tucky
-            shift: [-0.45kx, -0.43ky]
+            shift: [0.3kx, -0.5ky]
+          - ref: mirror_thumb_tucky
+            shift: [-0.45kx, -0.5ky]
           - ref: mirror_matrix_ring_bottom
             shift: [1.3kx, -0.5ky]
           - ref: mirror_matrix_ring_bottom
@@ -278,7 +278,7 @@ outlines:
           shift: [0, 0.5ky]
 
     _panel: # subtract curves from blocks
-      - name: _center
+      - _center
       - operation: subtract
         what: circle # thumb curve
         where:
@@ -286,8 +286,7 @@ outlines:
           shift: [0, -curve + 0.5curve_shift +15]
         radius: curve
       - _key_outline # visual switch outline
-      - operation: subtract
-        name: _breakoff_col_holes
+      - -_breakoff_col_holes
 
     panel: # pcb outline
       - name: _panel
@@ -323,11 +322,10 @@ outlines:
         where: reset
         size: [8, 4.9]
     debug:
-      - ^panel
+      - ^_panel
       - ^_switches
       - ^_mcu_hole
       - ^_mcu
-      - ^_reset
       - ^_reset
     top_view:
       - panel
@@ -346,7 +344,7 @@ pcbs:
       main:
         outline: panel
     footprints:
-      mx_hotswap: # switches
+      switches:
         what: ceoloide/switch_mx
         where:
           - /matrix_.*/
@@ -354,8 +352,7 @@ pcbs:
         params:
           from: "{{row_net}}"
           to: "{{colrow}}"
-
-      diode: # diodes
+      diodes:
         what: ceoloide/diode_tht_sod123
         where:
           - /matrix_.*/
@@ -380,11 +377,3 @@ pcbs:
     outlines:
       main:
         outline: switchplate
-    footprints:
-      main_logo: # metasepia
-        what: ceoloide/utility_text
-        where: mcu_hole
-        adjust:
-          shift: [0, -40]
-        params:
-          text: METASEPIA
