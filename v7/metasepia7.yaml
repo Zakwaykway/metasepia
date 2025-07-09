@@ -17,7 +17,7 @@ units:
   switch: 16 # switch size
   b: 0.05kx # bind for edges
 
-  spacing: xiao_x - 2.5
+  spacing: xiao_x - 0.
   angle: 32  # between halves
   curve: 55 + spacing
   curve_shift: 5
@@ -222,7 +222,7 @@ points:
       height: 4.9
     anchor:
       ref: reference_top_center
-      shift: [0, -4.9/2- 6]
+      shift: [0, -4.9/2- 7]
 
 outlines:
     _key_outline:
@@ -272,7 +272,7 @@ outlines:
           shift: [0.5kx, 0.5ky -4]
       # horiz bot
       - what: rectangle
-        size: [15, 1]
+        size: [15.5, 1]
         where: /_.*pinky_bottom/
         adjust: 
           shift: [0, 0.5ky]
@@ -291,7 +291,7 @@ outlines:
 
     panel: # pcb outline
       - name: _panel
-        fillet: 0
+        fillet: 2.75
     _switches:
       - what: rectangle
         size: 14
@@ -315,10 +315,9 @@ outlines:
         size: [xiao_x+7, xiao_y+7]
         fillet: 0
       - what: rectangle
-        operation: add
         where: mcu
         adjust.shift: [0,-xiao_y/2]
-        size: [xiao_x+17,11]
+        size: [spacing+20,11]
     _reset:
       - what: rectangle
         where: reset
@@ -335,8 +334,7 @@ outlines:
       - ^_keycaps
       - ^_mcu
     switchplate:
-      - name: panel
-        fillet: 2.75
+      - panel
       - -_switches
       - operation: subtract
         name: _mcu_hole
@@ -366,7 +364,7 @@ pcbs:
           from: "{{colrow}}"
           to: "{{column_net}}"
         adjust:
-          shift: [0, -5]
+          shift: [0, -4.5]
 
       xiao: # other components
         what: xiao
