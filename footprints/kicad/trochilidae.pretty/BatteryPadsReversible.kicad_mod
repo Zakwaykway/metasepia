@@ -100,7 +100,7 @@
 		(uuid "2b626917-a177-4b61-81a1-fd2a69eb9f9a")
 	)
 	(fp_text user "-"
-		(at 1.1 -2.286 0)
+		(at 1.1 -1.8 0)
 		(layer "F.SilkS")
 		(uuid "781602e4-fe25-4da3-a788-0c3d20aafcb7")
 		(effects
@@ -111,7 +111,7 @@
 		)
 	)
 	(fp_text user "+"
-		(at -1.1 -2.286 0)
+		(at -1.1 -1.8 0)
 		(layer "F.SilkS")
 		(uuid "c35a9928-3453-4c10-b581-c909a87ff023")
 		(effects
@@ -122,7 +122,7 @@
 		)
 	)
 	(fp_text user "-"
-		(at 1.1 -2.286 0)
+		(at 1.1 -1.8 0)
 		(layer "B.SilkS")
 		(uuid "1009eeb8-4be8-49ff-871d-1e30079ffe54")
 		(effects
@@ -134,7 +134,7 @@
 		)
 	)
 	(fp_text user "+"
-		(at -1.1 -2.286 0)
+		(at -1.1 -1.8 0)
 		(layer "B.SilkS")
 		(uuid "a39bff73-ba40-4b6f-b0a8-69b4aafc2399")
 		(effects
@@ -145,99 +145,28 @@
 			(justify mirror)
 		)
 	)
-	(pad "1" smd custom
+	(pad "1" smd rect
 		(at -1.1 0 180)
 		(size 1.5 2.1)
 		(layers "F.Cu")
-		(options
-			(clearance outline)
-			(anchor rect)
-		)
-		(primitives
-			(gr_poly
-				(pts
-					(xy 0.179 1.3352) (xy -0.1766 1.3352) (xy -0.1766 0.762) (xy 0.179 0.762)
-				)
-				(width 0.1)
-				(fill yes)
-			)
-		)
 		(uuid "d0bca7c3-16fb-43b6-91c1-9db8fac52cb2")
 	)
-	(pad "1" smd custom
-		(at -1.1 0 180)
-		(size 1.5 2.1)
-		(layers "F.Cu")
-		(options
-			(clearance outline)
-			(anchor rect)
-		)
-		(primitives
-			(gr_poly
-				(pts
-					(xy 0.179 1.3352) (xy -0.1766 1.3352) (xy -0.1766 0.762) (xy 0.179 0.762)
-				)
-				(width 0.1)
-				(fill yes)
-			)
-		)
-		(uuid "d2533b76-cb5a-4081-ab5f-478682b388c7")
-	)
-	(pad "1" smd custom
+	(pad "1" smd rect
 		(at -1.1 0)
 		(size 1.5 2.1)
 		(layers "B.Cu")
-		(options
-			(clearance outline)
-			(anchor rect)
-		)
-		(primitives
-			(gr_poly
-				(pts
-					(xy 0.1766 -0.7618) (xy -0.179 -0.7618) (xy -0.179 -1.335) (xy 0.1766 -1.335)
-				)
-				(width 0.1)
-				(fill yes)
-			)
-		)
 		(uuid "a1a9ae45-8792-4599-807b-3a9015cc7dcc")
 	)
-	(pad "2" smd custom
+	(pad "2" smd rect
 		(at 1.1 0 180)
 		(size 1.5 2.1)
 		(layers "F.Cu")
-		(options
-			(clearance outline)
-			(anchor rect)
-		)
-		(primitives
-			(gr_poly
-				(pts
-					(xy 0.1786 1.3352) (xy -0.177 1.3352) (xy -0.177 0.762) (xy 0.1786 0.762)
-				)
-				(width 0.1)
-				(fill yes)
-			)
-		)
 		(uuid "9d7add1e-d22e-4c3c-ab8e-6362e975e5d0")
 	)
-	(pad "2" smd custom
+	(pad "2" smd rect
 		(at 1.1 0)
 		(size 1.5 2.1)
 		(layers "B.Cu")
-		(options
-			(clearance outline)
-			(anchor rect)
-		)
-		(primitives
-			(gr_poly
-				(pts
-					(xy 0.1766 -0.7618) (xy -0.179 -0.7618) (xy -0.179 -1.335) (xy 0.1766 -1.335)
-				)
-				(width 0.1)
-				(fill yes)
-			)
-		)
 		(uuid "5ce23b6b-bd8c-44d9-a91a-04985175beda")
 	)
 	(group ""
