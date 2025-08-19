@@ -1,0 +1,385 @@
+meta:
+  engine: 4.1.0
+  name: metasepia_v8
+  author: zakwaykway
+  url: https://github.com/zakwaykway/metasepia
+  
+units:
+  capx: u-0.5 # kc visual size
+  capy: u-0.5
+  kx: u # spacing
+  ky: u
+  adj: -0.45ky # offset for splayed cols
+  xiao_x: 19 # xiao measurements
+  xiao_y: 21
+  $default_height: 0
+  $default_width: 0
+  switch: 16 # switch size
+  b: 0.05kx # bind for drc
+
+  spacing: 5 # between halves
+  angle: 35
+  curve: 70 + spacing
+  curve_shift: -12
+  center_block: 5.5kx # mid width
+  mcu_y: 37 # mcu height from curve
+
+  pinky_splay: 8
+  ring_stagger: 0.7ky
+  ring_splay: 4
+  middle_stagger: 0.25ky
+  middle_splay: 0
+  index_stagger: -0.45ky
+  inner_stagger: -0.35ky
+  thumb_base_angle: -16
+  thumb_splay: -0
+  thumb_adj: 0
+  thumb_stagger: -0.ky
+  thumb_shiftx: 0.45kx
+  thumb_shifty: -1.1ky
+
+
+points:
+  zones.matrix: 
+    anchor.shift: [90, -70]
+    rotate: -angle + pinky_splay + ring_splay + middle_splay
+    mirror:
+      ref: matrix_inner_top
+      shift: [0.5kx, 0.5kx]
+      distance: spacing
+    key:
+      width: capx
+      height: capy
+      spread: kx
+      padding: ky
+      autobind: 0
+      origin: [-kx/2,-ky/2]
+    rows:
+      bottom:
+      home:
+      top:
+    columns.pinky:
+      rows:
+        bottom: 
+          bind: [0.5ky, b, 0, b]
+          row_net: P0
+          column_net: P6
+        home:
+          bind: [0.5ky, 0.5kx, 0, b]
+          row_net: P2
+          column_net: P6
+        top:
+          bind: [0, 0.5kx, 0.5ky, b]
+          row_net: P0
+          column_net: P6
+        bottom.mirror:
+          row_net: P1
+          column_net: P10
+        home.mirror:
+          row_net: P3
+          column_net: P10
+        top.mirror:
+          row_net: P1
+          column_net: P10
+    columns.ring:
+      key:
+        stagger: ring_stagger
+        splay: -pinky_splay
+      rows:
+        bottom:
+          bind: [0.5ky, 1.5kx, 0, 0.5kx]
+          row_net: P4
+          column_net: P6
+        home:
+          bind: [0.5ky, 0.5kx, 0.5ky, 0]
+          row_net: P3
+          column_net: P6
+        top:
+          bind: [0, 1kx, 0.5ky, b]
+          row_net: P1
+          column_net: P6
+        bottom.mirror:
+          row_net: P5
+          column_net: P9
+        home.mirror:
+          row_net: P2
+          column_net: P10
+        top.mirror:
+          row_net: P0
+          column_net: P10
+    columns.middle:
+      key:
+        stagger: middle_stagger
+        splay: -ring_splay
+      rows:
+        bottom:
+          bind: [0.5ky, 0.5kx, 0, 0.5kx]
+          row_net: P5
+          column_net: P6
+        home:
+          bind: [0.5ky, 0.5kx, 0.5ky, 0.5kx]
+          row_net: P2
+          column_net: P7
+        top:
+          bind: [b, b, 0.5ky, b]
+          row_net: P0
+          column_net: P7
+        bottom.mirror:
+          row_net: P4
+          column_net: P9
+        home.mirror:
+          row_net: P3
+          column_net: P9
+        top.mirror:
+          row_net: P1
+          column_net: P9
+    columns.index:
+      key:
+        stagger: index_stagger
+        splay: -middle_splay
+      rows:
+        bottom:
+          bind: [0.5ky, 0.5kx, 0, b]
+          row_net: P4
+          column_net: P7
+        home:
+          row_net: P3
+          column_net: P7
+        top:
+          bind: [0, 0, 0.5ky, 0.5kx]
+          row_net: P1
+          column_net: P7
+        bottom.mirror:
+          row_net: P5
+          column_net: P8
+        home.mirror:
+          row_net: P2
+          column_net: P9
+        top.mirror:
+          row_net: P0
+          column_net: P9
+    columns.inner:
+      key.stagger: inner_stagger
+      rows:
+        bottom.skip: true
+        home:
+          bind: [0.5ky, 0, 0.25ky, 0.5kx]
+          row_net: P2
+          column_net: P8
+        top:
+          bind: [0, 0, 0.5ky, 0.5kx]
+          row_net: P0
+          column_net: P8
+        home.mirror:
+          row_net: P3
+          column_net: P8
+        top.mirror:
+          row_net: P1
+          column_net: P8
+
+  zones.thumb: # thumbs
+    anchor:
+      ref: matrix_index_bottom
+      shift: [thumb_shiftx, thumb_shifty]
+    mirror.$extends: points.zones.matrix.mirror
+    key.$extends: points.zones.matrix.key
+    columns:
+      tucky:
+        key:
+          splay: thumb_base_angle
+          bind: [ky, b, b, 0]
+          row_net: P5
+          column_net: P7
+        key.mirror:
+          row_net: P4
+          column_net: P10
+      reachy:
+        key:
+          origin: [0, adj + thumb_adj]
+          splay: thumb_splay
+          stagger: thumb_stagger
+          bind: [0, b, 0, kx]
+          row_net: P4
+          column_net: P8
+        key.mirror:
+          row_net: P5
+          column_net: P10
+
+  zones.reference_top_center: # mcu ref
+    anchor:
+      aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+      shift: [0, mcu_y]
+  zones.mcu:
+    anchor:
+      ref: reference_top_center
+      shift: [0, -0.5xiao_y]
+    key:
+      width: xiao_x
+      height: xiao_y
+  zones.reset: # reset switch
+    key:
+      width: 8
+      height: 4.9
+    anchor:
+      ref: reference_top_center
+      shift: [1.5, -4.9/2- 7]
+
+outlines:
+    _key_outline:
+      - what: rectangle
+        bound: true
+        size: switch
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+    _center: # main block, setup for substract
+      - what: rectangle # mcu
+        where:
+          ref: reference_top_center
+          shift: [0, -1ky-0.5mcu_y]
+        size: [3.65kx+spacing, 2ky+mcu_y]
+      - what: rectangle # block for curve
+        where: 
+          aggregate.parts: [thumb_reachy, mirror_thumb_reachy, matrix_index_bottom, mirror_matrix_index_bottom]
+          shift: [0, 0.3ky+0.5mcu_y]
+        size: [center_block+spacing, 3ky+mcu_y]
+      - what: polygon # edge wedges, main shape
+        points:
+          - ref: matrix_ring_bottom
+            shift: [-1.3kx, -0.5ky]
+          - ref: matrix_ring_bottom
+            shift: [1.3kx, -0.5ky]
+          - ref: thumb_tucky
+            shift: [-0.45kx, -0.5ky]
+          - ref: thumb_tucky
+            shift: [0.3kx, -0.5ky]
+          - ref: mirror_thumb_tucky
+            shift: [0.3kx, -0.5ky]
+          - ref: mirror_thumb_tucky
+            shift: [-0.45kx, -0.5ky]
+          - ref: mirror_matrix_ring_bottom
+            shift: [1.3kx, -0.5ky]
+          - ref: mirror_matrix_ring_bottom
+            shift: [-1.3kx, -0.5ky]
+        fillet: 30
+
+    _breakoff_col_holes:
+      # vert bot
+      - what: rectangle
+        size: [1.1, 11]
+        where: /_.*pinky_bottom/
+        adjust: 
+          shift: [0.5kx, 0.5ky -4]
+      # horiz bot
+      - what: rectangle
+        size: [15.5, 1]
+        where: /_.*pinky_bottom/
+        adjust: 
+          shift: [0, 0.5ky]
+
+    _panel: # subtract curves from blocks
+      - _center
+      - operation: subtract
+        what: circle # thumb curve
+        where:
+          aggregate.parts: [thumb_reachy, mirror_thumb_reachy, thumb_tucky, mirror_thumb_tucky]
+          shift: [0, -curve + 0.5curve_shift +15]
+        radius: curve
+      - _key_outline # visual switch outline
+      - -_breakoff_col_holes
+
+    panel: # pcb outline
+      - name: _panel
+        fillet: 2.75
+    _switches:
+      - what: rectangle
+        size: 14
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+        corner: 0.5
+    _keycaps:
+      - what: rectangle
+        size: [capx, capy]
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+    _mcu:
+      - what: rectangle
+        where: mcu
+        size: [xiao_x, xiao_y]
+    _mcu_hole:
+      - what: rectangle
+        where: mcu
+        size: [xiao_x+7, xiao_y+7]
+        fillet: 0
+      - what: rectangle
+        where: mcu
+        adjust.shift: [0,-xiao_y/2]
+        size: [spacing+20,11]
+    _reset:
+      - what: rectangle
+        where: reset
+        size: [8, 4.9]
+    debug:
+      - ^_panel
+      - ^_switches
+      - ^_mcu_hole
+      - ^_mcu
+      - ^_reset
+    top_view:
+      - panel
+      - ^_keycaps
+      - ^_mcu
+    switchplate:
+      - panel
+      - -_switches
+      - operation: subtract
+        name: _mcu_hole
+        fillet: 1.75
+
+pcbs:
+  metasepia_v8:
+    outlines:
+      main:
+        outline: panel
+    footprints:
+      switches:
+        what: ceoloide/switch_mx
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+        params:
+          from: "{{row_net}}"
+          to: "{{colrow}}"
+      choc:
+        what: ceoloide/switch_choc_v1_v2
+        where: /thumb_.*/
+        params:
+          from: "{{row_net}}"
+          to: "{{colrow}}"
+      diodes:
+        what: ceoloide/diode_tht_sod123
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+        params:
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+        adjust:
+          shift: [0, -4]
+
+      xiao: # other components
+        what: xiao
+        where: mcu
+      reset:
+        what: button
+        where: reset
+        params:
+          from: RST
+          to: GND
+          side: B
+  metasepia_switchplate:
+    outlines:
+      main:
+        outline: switchplate
