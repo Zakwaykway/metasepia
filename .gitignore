@@ -1,6 +1,6 @@
-*/.DS_Store
 */*-backups/
 fp-info-cache
 */*.json
 *.lck
 *.kicad_prl
+footprints/kicad/storage.pretty
