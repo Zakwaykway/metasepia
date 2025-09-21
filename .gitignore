@@ -4,3 +4,4 @@ fp-info-cache
 *.lck
 *.kicad_prl
 footprints/kicad/storage.pretty
+*.log
