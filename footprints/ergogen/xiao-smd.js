@@ -1,6 +1,6 @@
 // XIAO "BLE" nRF52840 Footprint
 // Features SMD pads for main pins.
-// Uses Through Hole pins and interior cutouts for Reset, Power, and NFC pins.
+// Uses Through Hole pins and interior cutouts for Reset and Power pins.
 
 module.exports = {
   params: {
@@ -22,23 +22,16 @@ module.exports = {
     P9: {type: 'net', value: 'P9'},
     P8: {type: 'net', value: 'P8'},
     P7: {type: 'net', value: 'P7'},
-
-    // Main Cutout
-    SWCLK: {type: 'net', value: 'SWCLK'},
-    SWDIO: {type: 'net', value: 'SWDIO'},
+    
     // RST
     RST: {type: 'net', value: 'RST'},
 
     // Power Cutout
     BAT_POS: {type: 'net', value: 'BAT_POS'},
-    BAT_NEG: {type: 'net', value: 'BAT_NEG'},
-
-    // NFC Cutout
-    NFC0: {type: 'net', value: 'NFC0'},
-    NFC1: {type: 'net', value: 'NFC1'}
+    BAT_NEG: {type: 'net', value: 'BAT_NEG'}
   },
   body: p => `
-    (module frequent:xiao-smd (layer F.Cu) (tedit 640103B8)
+    (module xiao (layer F.Cu) (tedit 640103B8)
       ${p.at /* parametric position */}
       
       ${'' /* footprint reference */}
@@ -65,16 +58,11 @@ module.exports = {
       (pad "13" thru_hole oval (at 7.62 -5.08 ${p.rot + 180}) (size 2.75 1.8) (drill 1 (offset -0.475 0)) (layers *.Cu *.Mask) ${p.GND.str})
       (pad "14" thru_hole oval (at 7.62 -7.62 ${p.rot + 180}) (size 2.75 1.8) (drill 1 (offset -0.475 0)) (layers *.Cu *.Mask) ${p.RAW5V.str})
 
-      (pad "15" thru_hole circle (at -1.27 -8.572 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.SWCLK.str})
-      (pad "16" thru_hole circle (at 1.27 -8.572 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.SWDIO.str})
-      (pad "17" thru_hole circle (at -1.27 -6.032 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.RST.str})
-      (pad "18" thru_hole circle (at 1.27 -6.032 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.GND.str})
+      (pad "17" thru_hole circle (at -1.27 -6.032 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.GND.str})
+      (pad "18" thru_hole circle (at 1.27 -6.032 ${p.rot + 90}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.RST.str})
 
       (pad "19" thru_hole circle (at -4.445 -0.317 ${p.rot + 180}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.BAT_POS.str})
       (pad "20" thru_hole circle (at -4.445 -2.222 ${p.rot + 180}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.BAT_NEG.str})
-
-      (pad "21" thru_hole circle (at 3.802408 8.801408 ${p.rot + 270}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.NFC0.str})
-      (pad "22" thru_hole circle (at 5.707408 8.801408 ${p.rot + 270}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.NFC1.str})
     )
   `
 }
