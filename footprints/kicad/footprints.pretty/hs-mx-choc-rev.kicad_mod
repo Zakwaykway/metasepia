@@ -1,0 +1,1630 @@
+(footprint "hs-mx-choc-rev"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Footprint for Cherry MX style and Kailh Choc V1 style switches with Kailh hotswap sockets")
+	(property "Reference" "REF**"
+		(at -4.25 -1.75 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "CPG151101S11"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -4.864824 -6.75022)
+		(end -4.864824 -6.52022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start -4.864824 -3.67022)
+		(end -4.864824 -3.20022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start -4.364824 -2.70022)
+		(end 0.2 -2.70022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start -3.314824 -6.75022)
+		(end -4.864824 -6.75022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start -2.3 7.475)
+		(end -1.5 8.275)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start -1.5 3.625)
+		(end -2.3 4.425)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start -1.5 3.625)
+		(end -0.5 3.625)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start -1.5 8.275)
+		(end -0.5 8.275)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start 4.085176 -6.75022)
+		(end -1.814824 -6.75022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start 6.085176 -3.95022)
+		(end 6.085176 -4.75022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start 6.085176 -1.10022)
+		(end 6.085176 -0.86022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start 7.504 1.475)
+		(end 6.504 1.475)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_line
+		(start 7.504 1.475)
+		(end 7.504 2.175)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+	)
+	(fp_arc
+		(start -4.364824 -2.70022)
+		(mid -4.718377 -2.846667)
+		(end -4.864824 -3.20022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS") 
+	)
+	(fp_arc
+		(start 0.2 -2.70022)
+		(mid 1.670693 -2.183637)
+		(end 2.494322 -0.86022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS") 
+	)
+	(fp_arc
+		(start 4.085176 -6.75022)
+		(mid 5.49939 -6.164434)
+		(end 6.085176 -4.75022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS") 
+	)
+	(fp_arc
+		(start 7.25 5.325)
+		(mid 7.015685 5.890685)
+		(end 6.45 6.125)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS") 
+	)
+	(fp_line
+		(start -7.504 1.475)
+		(end -7.503999 2.174998)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start -7.504 1.475)
+		(end -6.504 1.475001)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start -6.085177 -1.100221)
+		(end -6.085176 -0.86022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start -6.085176 -3.95022)
+		(end -6.085176 -4.75022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start -4.085176 -6.75022)
+		(end 1.814823 -6.75022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start 1.5 3.625)
+		(end 0.5 3.625)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start 1.5 3.625)
+		(end 2.3 4.425)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start 1.5 8.275)
+		(end 0.500001 8.275001)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start 2.299999 7.475002)
+		(end 1.5 8.275)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start 3.314825 -6.750218)
+		(end 4.864825 -6.750222)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start 4.364825 -2.700219)
+		(end -0.2 -2.700218)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start 4.864824 -3.67022)
+		(end 4.864824 -3.20022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start 4.864825 -6.750222)
+		(end 4.864824 -6.52022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_arc
+		(start -6.45 6.125)
+		(mid -7.015684 5.890685)
+		(end -7.249999 5.325001)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_arc
+		(start -6.085176 -4.75022)
+		(mid -5.499389 -6.164431)
+		(end -4.085176 -6.75022)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_arc
+		(start -2.494322 -0.86022)
+		(mid -1.670693 -2.183637)
+		(end -0.2 -2.700218)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_arc
+		(start 4.864824 -3.20022)
+		(mid 4.718377 -2.846667)
+		(end 4.364825 -2.700219)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "B.SilkS") 
+	)
+	(fp_line
+		(start -9.104 2.775)
+		(end -7.503999 2.775)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -9.104 4.725)
+		(end -9.104 2.775)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -8.685177 -3.75022)
+		(end -8.685176 -1.300222)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -8.685176 -1.300222)
+		(end -6.085175 -1.300222)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -7.504 1.475)
+		(end -7.503999 2.174998)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -7.504 1.475)
+		(end -3.399998 1.475001)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -7.503999 2.174998)
+		(end -7.503999 2.775)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -7.250001 4.725001)
+		(end -9.104 4.725)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -7.249999 5.325001)
+		(end -7.250001 4.725001)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -6.085176 -0.86022)
+		(end -2.494322 -0.86022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -6.085175 -3.75022)
+		(end -8.685177 -3.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -6.085175 -3.75022)
+		(end -6.085176 -4.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -6.085175 -1.300222)
+		(end -6.085176 -0.86022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -4.085176 -6.75022)
+		(end 4.864825 -6.750222)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -3.45 6.125)
+		(end -6.45 6.125)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -2.45 7.475001)
+		(end -2.449999 7.125001)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -2.45 7.475001)
+		(end -1.650001 8.274999)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 1.5 3.625)
+		(end -0.299999 3.625)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 1.5 3.625)
+		(end 2.3 4.425)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 1.5 8.275)
+		(end -1.650001 8.274999)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 2.299999 7.475002)
+		(end 1.5 8.275)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 2.299999 7.475002)
+		(end 2.3 6.925)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 2.3 4.975)
+		(end 2.3 4.425)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 4.104 6.924998)
+		(end 2.3 6.925)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 4.104002 4.975)
+		(end 2.3 4.975)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 4.104002 4.975)
+		(end 4.104 6.924998)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 4.864823 -3.87022)
+		(end 4.864823 -2.700221)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 4.864823 -3.87022)
+		(end 7.414823 -3.870219)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 4.864823 -2.700221)
+		(end -0.2 -2.700218)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 4.864825 -6.750222)
+		(end 4.864824 -6.32022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 7.414823 -6.320221)
+		(end 4.864824 -6.32022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start 7.414823 -3.870219)
+		(end 7.414823 -6.320221)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_arc
+		(start -6.45 6.125)
+		(mid -7.015684 5.890685)
+		(end -7.249999 5.325001)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_arc
+		(start -6.085176 -4.75022)
+		(mid -5.499389 -6.164431)
+		(end -4.085176 -6.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_arc
+		(start -3.45 6.125)
+		(mid -2.742893 6.417894)
+		(end -2.449999 7.125001)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_arc
+		(start -3.399998 1.475001)
+		(mid -2.826424 1.65585)
+		(end -2.460307 2.13298)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_arc
+		(start -2.494322 -0.86022)
+		(mid -1.670503 -2.1834)
+		(end -0.2 -2.700218)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_arc
+		(start -0.299999 3.624999)
+		(mid -1.577272 3.167235)
+		(end -2.455444 2.13293)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.CrtYd") 
+	)
+	(fp_line
+		(start -7.414824 -6.32022)
+		(end -4.864824 -6.32022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -7.414824 -3.87022)
+		(end -7.414824 -6.32022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -4.864824 -6.75022)
+		(end -4.864824 -6.32022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -4.864824 -3.87022)
+		(end -7.414824 -3.87022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -4.864824 -3.87022)
+		(end -4.864824 -2.70022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -4.864824 -2.70022)
+		(end 0.2 -2.70022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -4.104 4.975)
+		(end -4.104 6.925)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -4.104 4.975)
+		(end -2.3 4.975)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -4.104 6.925)
+		(end -2.3 6.925)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -2.3 4.975)
+		(end -2.3 4.425)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -2.3 7.475)
+		(end -2.3 6.925)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -2.3 7.475)
+		(end -1.5 8.275)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -1.5 3.625)
+		(end -2.3 4.425)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -1.5 3.625)
+		(end 0.3 3.625)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -1.5 8.275)
+		(end 1.65 8.275)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 2.45 7.475)
+		(end 1.65 8.275)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 2.45 7.475)
+		(end 2.45 7.125)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 3.45 6.125)
+		(end 6.45 6.125)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 4.085176 -6.75022)
+		(end -4.864824 -6.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 6.085176 -3.75022)
+		(end 6.085176 -4.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 6.085176 -3.75022)
+		(end 8.685176 -3.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 6.085176 -1.30022)
+		(end 6.085176 -0.86022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 6.085176 -0.86022)
+		(end 2.494322 -0.86022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 7.25 4.725)
+		(end 9.104 4.725)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 7.25 5.325)
+		(end 7.25 4.725)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 7.504 1.475)
+		(end 3.4 1.475)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 7.504 1.475)
+		(end 7.504 2.175)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 7.504 2.175)
+		(end 7.504 2.775)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 8.685176 -3.75022)
+		(end 8.685176 -1.30022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 8.685176 -1.30022)
+		(end 6.085176 -1.30022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 9.104 2.775)
+		(end 7.504 2.775)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start 9.104 4.725)
+		(end 9.104 2.775)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_arc
+		(start 0.2 -2.70022)
+		(mid 1.670503 -2.183399)
+		(end 2.494322 -0.86022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_arc
+		(start 2.45 7.125)
+		(mid 2.742893 6.417893)
+		(end 3.45 6.125)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_arc
+		(start 2.455444 2.13293)
+		(mid 1.577272 3.167235)
+		(end 0.299999 3.624999)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_arc
+		(start 2.460307 2.13298)
+		(mid 2.826423 1.655848)
+		(end 3.4 1.475)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_arc
+		(start 4.085176 -6.75022)
+		(mid 5.49939 -6.164434)
+		(end 6.085176 -4.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_arc
+		(start 7.25 5.325)
+		(mid 7.015685 5.890685)
+		(end 6.45 6.125)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd") 
+	)
+	(fp_line
+		(start -7.246002 5.349999)
+		(end -7.246 1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start -7.246 1.5)
+		(end -3.396 1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start -6.085176 -0.86022)
+		(end -6.085176 -4.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start -6.085176 -0.86022)
+		(end -2.494322 -0.86022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start -4.085176 -6.75022)
+		(end 4.864825 -6.750222)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start -3.446001 6.149999)
+		(end -6.445999 6.15)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start -2.445999 7.499999)
+		(end -2.446 7.149999)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start -2.445999 7.499999)
+		(end -1.646 8.300001)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start 1.504 3.649999)
+		(end -0.296001 3.65)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start 1.504 3.649999)
+		(end 2.304 4.45)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start 1.504 8.3)
+		(end -1.646 8.300001)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start 2.304 7.5)
+		(end 1.504 8.3)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start 2.304 7.5)
+		(end 2.304 4.45)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start 4.864823 -2.700221)
+		(end -0.2 -2.700218)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start 4.864825 -6.750222)
+		(end 4.864823 -2.700221)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_arc
+		(start -6.445999 6.15)
+		(mid -7.011685 5.915685)
+		(end -7.246002 5.349999)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_arc
+		(start -6.085176 -4.75022)
+		(mid -5.499389 -6.164431)
+		(end -4.085176 -6.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_arc
+		(start -3.446001 6.149999)
+		(mid -2.738893 6.442892)
+		(end -2.446 7.149999)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_arc
+		(start -3.396 1.5)
+		(mid -2.822424 1.680848)
+		(end -2.456308 2.15798)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_arc
+		(start -2.494322 -0.86022)
+		(mid -1.670503 -2.1834)
+		(end -0.2 -2.700218)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_arc
+		(start -0.296 3.65)
+		(mid -1.573273 3.192236)
+		(end -2.451444 2.15793)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "B.Fab") 
+	)
+	(fp_line
+		(start -4.864824 -6.75022)
+		(end -4.864824 -2.70022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start -4.864824 -2.70022)
+		(end 0.2 -2.70022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start -2.304 7.5)
+		(end -2.304 4.45)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start -2.304 7.5)
+		(end -1.504 8.3)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start -1.504 3.65)
+		(end -2.304 4.45)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start -1.504 3.65)
+		(end 0.296 3.65)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start -1.504 8.3)
+		(end 1.646 8.3)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start 2.446 7.5)
+		(end 1.646 8.3)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start 2.446 7.5)
+		(end 2.446 7.15)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start 3.446 6.15)
+		(end 6.446 6.15)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start 4.085176 -6.75022)
+		(end -4.864824 -6.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start 6.085176 -0.86022)
+		(end 2.494322 -0.86022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start 6.085176 -0.86022)
+		(end 6.085176 -4.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start 7.246 1.5)
+		(end 3.396 1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_line
+		(start 7.246 5.35)
+		(end 7.246 1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_arc
+		(start 0.2 -2.70022)
+		(mid 1.670503 -2.183399)
+		(end 2.494322 -0.86022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_arc
+		(start 2.446 7.15)
+		(mid 2.738893 6.442893)
+		(end 3.446 6.15)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_arc
+		(start 2.451444 2.15793)
+		(mid 1.573272 3.192235)
+		(end 0.295999 3.649999)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_arc
+		(start 2.456307 2.15798)
+		(mid 2.822423 1.680848)
+		(end 3.396 1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_arc
+		(start 4.085176 -6.75022)
+		(mid 5.49939 -6.164434)
+		(end 6.085176 -4.75022)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(fp_arc
+		(start 7.246 5.35)
+		(mid 7.011685 5.915685)
+		(end 6.446 6.15)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.Fab") 
+	)
+	(pad "" thru_hole circle
+		(at 0 5.95)
+		(size 3.3 3.3)
+		(drill 3)
+		(layers "*.Cu" "F.Mask")
+		(remove_unused_layers no) 
+	)
+	(pad "1" smd roundrect
+		(at -8.245 3.75 180)
+		(size 2.65 2.6)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(roundrect_rratio 0.1) 
+	)
+	(pad "1" smd roundrect
+		(at -7.36 -2.54 180)
+		(size 2.55 2.5)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(roundrect_rratio 0.1) 
+	)
+	(pad "1" smd rect
+		(at -6.55 3.75 180)
+		(size 1.2 2.6)
+		(layers "B.Cu") 
+	)
+	(pad "1" smd roundrect
+		(at -6.09 -5.08)
+		(size 2.55 2.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.1) 
+	)
+	(pad "1" smd rect
+		(at -5.635 -2.54)
+		(size 1.65 2.5)
+		(layers "B.Cu") 
+	)
+	(pad "1" thru_hole circle
+		(at -5.5 0)
+		(size 2 2)
+		(drill 1.7)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no) 
+	)
+	(pad "1" thru_hole circle
+		(at -5.08 0)
+		(size 2.2 2.2)
+		(drill 1.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no) 
+	)
+	(pad "1" thru_hole circle
+		(at -5 3.75 180)
+		(size 3.3 3.3)
+		(drill 3)
+		(layers "*.Cu" "B.Mask")
+		(remove_unused_layers no) 
+	)
+	(pad "1" smd rect
+		(at -4.34 -5.08)
+		(size 1.65 2.5)
+		(layers "F.Cu") 
+	)
+	(pad "1" thru_hole circle
+		(at -3.81 -2.54 180)
+		(size 3.3 3.3)
+		(drill 3)
+		(property pad_prop_mechanical)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no) 
+	)
+	(pad "1" smd roundrect
+		(at -3.245 5.95)
+		(size 2.65 2.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.1) 
+	)
+	(pad "1" thru_hole circle
+		(at -2.54 -5.08)
+		(size 3.3 3.3)
+		(drill 3)
+		(property pad_prop_mechanical)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no) 
+	)
+	(pad "2" thru_hole circle
+		(at 2.54 -5.08 180)
+		(size 3.3 3.3)
+		(drill 3)
+		(property pad_prop_mechanical)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no) 
+	)
+	(pad "2" smd roundrect
+		(at 3.245001 5.95 180)
+		(size 2.65 2.6)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(roundrect_rratio 0.1) 
+	)
+	(pad "2" thru_hole circle
+		(at 3.81 -2.54)
+		(size 3.3 3.3)
+		(drill 3)
+		(property pad_prop_mechanical)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no) 
+	)
+	(pad "2" smd rect
+		(at 4.34 -5.08 180)
+		(size 1.65 2.5)
+		(layers "B.Cu") 
+	)
+	(pad "2" thru_hole circle
+		(at 5 3.75)
+		(size 3.3 3.3)
+		(drill 3)
+		(layers "*.Cu" "F.Mask")
+		(remove_unused_layers no) 
+	)
+	(pad "2" thru_hole circle
+		(at 5.08 0)
+		(size 2.2 2.2)
+		(drill 1.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no) 
+	)
+	(pad "2" thru_hole circle
+		(at 5.5 0)
+		(size 2 2)
+		(drill 1.7)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no) 
+	)
+	(pad "2" smd rect
+		(at 5.635 -2.54 180)
+		(size 1.65 2.5)
+		(layers "F.Cu") 
+	)
+	(pad "2" smd roundrect
+		(at 6.09 -5.08 180)
+		(size 2.55 2.5)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(roundrect_rratio 0.1) 
+	)
+	(pad "2" smd rect
+		(at 6.55 3.75)
+		(size 1.2 2.6)
+		(layers "F.Cu") 
+	)
+	(pad "2" smd roundrect
+		(at 7.36 -2.54)
+		(size 2.55 2.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.1) 
+	)
+	(pad "2" smd roundrect
+		(at 8.245 3.75)
+		(size 2.65 2.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.1) 
+	)
+	(pad "3" thru_hole circle
+		(at 0 0 180)
+		(size 5.0625 5.0625)
+		(drill 4.7625)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no) 
+	)
+	(embedded_fonts no)
+	(model "${KICAD8_3RD_PARTY}/3dmodels/com_github_ebastler_marbastlib/HS_CPG151101S11_MX.step"
+		(offset
+			(xyz -4.82 6.74 1.82)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 180 0 0)
+		)
+	)
+)
