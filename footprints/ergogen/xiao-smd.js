@@ -36,8 +36,8 @@ module.exports = {
     // BAT_NEG (functionally another GND)
 
     /* NFC cutout */
-    NFC0: {type: 'net', value: 'NFC0'},
     NFC1: {type: 'net', value: 'NFC1'},
+    NFC2: {type: 'net', value: 'NFC2'},
 
   },
   body: p => `
@@ -75,8 +75,8 @@ module.exports = {
 
       (pad "19" thru_hole circle (at -4.445 -0.317 ${p.rot + 180}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.BAT_POS.str})
 
-      (pad "21" thru_hole circle (at 3.802408 8.801408 ${p.rot + 270}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.NFC0.str})
-      (pad "22" thru_hole circle (at 5.707408 8.801408 ${p.rot + 270}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.NFC1.str})
+      (pad "21" thru_hole circle (at 3.802408 8.801408 ${p.rot + 270}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.NFC1.str})
+      (pad "22" thru_hole circle (at 5.707408 8.801408 ${p.rot + 270}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.NFC2.str})
     )
   `
 }
