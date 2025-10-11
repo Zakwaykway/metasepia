@@ -1,4 +1,4 @@
-(footprint "HSMX-DEFINITIVE"
+(footprint "hsmx"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
@@ -154,17 +154,6 @@
 		(layer "F.SilkS")
 		(uuid "be36be03-7526-4bc8-aa7d-8c8a89e8aef8")
 	)
-	(fp_rect
-		(start -9.525 -9.525)
-		(end 9.525 9.525)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(fill no)
-		(layer "Dwgs.User")
-		(uuid "7eb14262-3140-4f1b-b979-757cd7be1aca")
-	)
 	(fp_line
 		(start -7 -6.5)
 		(end -7 6.5)
@@ -248,17 +237,6 @@
 		)
 		(layer "Eco2.User")
 		(uuid "04b68965-2fdb-4122-8486-fb22ad930f20")
-	)
-	(fp_rect
-		(start -7 -7)
-		(end 7 7)
-		(stroke
-			(width 0.05)
-			(type default)
-		)
-		(fill no)
-		(layer "B.CrtYd")
-		(uuid "8f2859a9-a762-478d-a819-a7cf57dea40a")
 	)
 	(fp_line
 		(start -7.414824 -6.32022)
