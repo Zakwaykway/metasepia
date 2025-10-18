@@ -8,6 +8,10 @@ Notable changes:
 
 v7 is the only one tested; fully functional (including wireless) with both xiao rp2040 & xiao nrf52840.
 
+![photo1](https://github.com/zakwaykway/metasepia/blob/main/v7/IMG_9496.jpeg?raw=true)
+
+
+
 
 An intensive learning experience. 
 Thanks to mrzealot for ergogen, ceoloide for their fork of ergogen, and flatfootfox for their guide to ergogen. 
