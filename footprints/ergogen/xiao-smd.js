@@ -26,22 +26,19 @@ module.exports = {
     P7: {type: 'net', value: 'P7'},
 
     /* Main cutout */
-    // SWCLK: {type: 'net', value: 'SWCLK'},
-    // SWDIO: {type: 'net', value: 'SWDIO'},
-    // GND (already defined)
     RST: {type: 'net', value: 'RST'},
 
     /* Power Cutout */
     BAT_POS: {type: 'net', value: 'BAT_POS'},
-    // BAT_NEG (functionally another GND)
 
     /* NFC cutout */
     NFC1: {type: 'net', value: 'NFC1'},
     NFC2: {type: 'net', value: 'NFC2'},
 
   },
-  body: p => `
-    (module xiao-ble (layer F.Cu) (tedit 640103B8)
+  body: p => {
+    return `
+    (footprint xiao-ble (layer F.Cu) (tedit 640103B8)
       ${p.at /* parametric position */}
       
       ${'' /* footprint reference */}
@@ -78,5 +75,6 @@ module.exports = {
       (pad "21" thru_hole circle (at 3.802408 8.801408 ${p.rot + 270}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.NFC1.str})
       (pad "22" thru_hole circle (at 5.707408 8.801408 ${p.rot + 270}) (size 1.397 1.397) (drill 1.016) (layers *.Cu *.Mask) ${p.NFC2.str})
     )
-  `
+    `;
+  }
 }
