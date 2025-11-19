@@ -2,8 +2,8 @@ module.exports = {
   params: {
     designator: 'XX',
     side: 'F',
-    GND: { type: 'net', value: 'GND' },
     BAT_P: { type: 'net', value: 'BAT_P' },
+    GND: { type: 'net', value: 'GND' },
   },
   body: p => {
     const fp = [];
@@ -26,8 +26,8 @@ fp.push(`(embedded_fonts no)`);
 // Pads
 fp.push(`(pad "1" smd roundrect (at -10.7 ${flipN(flip, 0)} ${flipR(flip, p.r + 0)}) (size 4.3 2.8) (layers "${(flip ? "B" : "F")}.Cu" "${(flip ? "B" : "F")}.Mask" "${(flip ? "B" : "F")}.Paste") (roundrect_rratio 0.15)  ${p.GND})`);
 fp.push(`(pad "1" smd roundrect (at -10.7 ${flipN(flip, 0)} ${flipR(flip, p.r + 0)}) (size 4.3 2.8) (layers "${(flip ? "F" : "B")}.Cu" "${(flip ? "F" : "B")}.Mask" "${(flip ? "F" : "B")}.Paste") (roundrect_rratio 0.15)  ${p.GND})`);
-fp.push(`(pad "2" smd roundrect (at 11.1 ${flipN(flip, 0)} ${flipR(flip, p.r + 0)}) (size 3.5 3.8) (layers "${(flip ? "B" : "F")}.Cu" "${(flip ? "B" : "F")}.Mask" "${(flip ? "B" : "F")}.Paste") (roundrect_rratio 0.36) (chamfer_ratio 0) (chamfer top_left bottom_left)  ${p.P2})`);
-fp.push(`(pad "2" smd roundrect (at 11.1 ${flipN(flip, 0)} ${flipR(flip, p.r + 0)}) (size 3.5 3.8) (layers "${(flip ? "F" : "B")}.Cu" "${(flip ? "F" : "B")}.Mask" "${(flip ? "F" : "B")}.Paste") (roundrect_rratio 0.36) (chamfer_ratio 0) (chamfer top_left bottom_left)  ${p.P2})`);
+fp.push(`(pad "2" smd roundrect (at 11.1 ${flipN(flip, 0)} ${flipR(flip, p.r + 0)}) (size 3.5 3.8) (layers "${(flip ? "B" : "F")}.Cu" "${(flip ? "B" : "F")}.Mask" "${(flip ? "B" : "F")}.Paste") (roundrect_rratio 0.36) (chamfer_ratio 0) (chamfer top_left bottom_left)  ${p.BAT_P})`);
+fp.push(`(pad "2" smd roundrect (at 11.1 ${flipN(flip, 0)} ${flipR(flip, p.r + 0)}) (size 3.5 3.8) (layers "${(flip ? "F" : "B")}.Cu" "${(flip ? "F" : "B")}.Mask" "${(flip ? "F" : "B")}.Paste") (roundrect_rratio 0.36) (chamfer_ratio 0) (chamfer top_left bottom_left)  ${p.BAT_P})`);
 
 // Drawings on B.SilkS
 fp.push(`(fp_line (start -9.845513 ${flipN(flip, 7.846149)}) (end 8.445512 ${flipN(flip, 7.846149)}) (stroke (width 0.2) (type solid)) (layer "${(flip ? "F.SilkS" : "B.SilkS")}") )`);

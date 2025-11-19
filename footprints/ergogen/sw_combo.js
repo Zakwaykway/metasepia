@@ -2,9 +2,9 @@ module.exports = {
   params: {
     designator: 'XX',
     side: 'F',
-    from: { type: 'net', value: 'undefined' },
-    to: { type: 'net', value: 'undefined' },
-    GND: { type: 'net', value: 'GND' },
+    from: { type: 'net', value: undefined },
+    to: { type: 'net', value: undefined },
+    center: { type: 'net', value: 'GND' },
   },
   body: p => {
     const fp = [];
@@ -51,7 +51,7 @@ fp.push(`(pad "2" smd roundrect (at 6.09 ${flipN(flip, -5.08)} ${flipR(flip, p.r
 fp.push(`(pad "2" smd rect (at 6.55 ${flipN(flip, 3.75)} ${flipR(flip, p.r + 0)}) (size 1.2 2.6) (layers "${(flip ? "B" : "F")}.Cu")  ${p.to})`);
 fp.push(`(pad "2" smd roundrect (at 7.36 ${flipN(flip, -2.54)} ${flipR(flip, p.r + 0)}) (size 2.55 2.5) (layers "${(flip ? "B" : "F")}.Cu" "${(flip ? "B" : "F")}.Mask" "${(flip ? "B" : "F")}.Paste") (roundrect_rratio 0.1)  ${p.to})`);
 fp.push(`(pad "2" smd roundrect (at 8.245 ${flipN(flip, 3.75)} ${flipR(flip, p.r + 0)}) (size 2.65 2.6) (layers "${(flip ? "B" : "F")}.Cu" "${(flip ? "B" : "F")}.Mask" "${(flip ? "B" : "F")}.Paste") (roundrect_rratio 0.1)  ${p.to})`);
-fp.push(`(pad "3" thru_hole circle (at 0 ${flipN(flip, 0)} ${flipR(flip, p.r + 180)}) (size 5.0625 5.0625) (drill 4.7625) (layers "*.Cu") (remove_unused_layers no)  ${p.GND})`);
+fp.push(`(pad "3" thru_hole circle (at 0 ${flipN(flip, 0)} ${flipR(flip, p.r + 180)}) (size 5.0625 5.0625) (drill 4.7625) (layers "*.Cu") (remove_unused_layers no)  ${p.center})`);
 
 // Drawings on B.CrtYd
 fp.push(`(fp_line (start -9.050004 ${flipN(flip, 2.910001)}) (end -7.250004 ${flipN(flip, 2.910001)}) (stroke (width 0.05) (type solid)) (layer "${(flip ? "F.CrtYd" : "B.CrtYd")}") )`);
@@ -241,4 +241,3 @@ function normalizeAngle(angle) {
 }
 function flipR(flip, r) { return normalizeAngle(flip ? (180 - r) : r) }
 function flipN(flip, n) { return flip ? -n : n }
-
