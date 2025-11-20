@@ -1,3 +1,5 @@
+// bs-8 battery holder for cr2032
+
 module.exports = {
   params: {
     designator: 'XX',
