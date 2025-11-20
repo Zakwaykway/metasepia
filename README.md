@@ -8,9 +8,9 @@ Notable changes:
 
 v7 is the only one tested; fully functional (including wireless) with both xiao rp2040 & xiao nrf52840.
 
-![photo1](https://github.com/zakwaykway/metasepia/blob/main/v7/IMG_9496.jpeg?raw=true)
-![photo2](https://github.com/zakwaykway/metasepia/blob/main/v7/IMG_9596.jpeg?raw=true)
-![photo3](https://github.com/zakwaykway/metasepia/blob/main/v7/IMG_9694.jpeg?raw=true)
+![photo1](https://github.com/zakwaykway/metasepia/blob/main/pcb/IMG_9496.jpeg?raw=true)
+![photo2](https://github.com/zakwaykway/metasepia/blob/main/pcb/IMG_9596.jpeg?raw=true)
+![photo3](https://github.com/zakwaykway/metasepia/blob/main/pcb/IMG_9694.jpeg?raw=true)
 
 
 
