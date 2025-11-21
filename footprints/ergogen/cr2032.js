@@ -2,7 +2,7 @@
 
 module.exports = {
   params: {
-    designator: 'XX',
+    designator: 'COIN',
     side: 'F',
     BAT_P: { type: 'net', value: 'BAT_P' },
     GND: { type: 'net', value: 'GND' },

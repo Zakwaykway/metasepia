@@ -1,6 +1,6 @@
 module.exports = {
   params: {
-    designator: 'XX',
+    designator: 'SW',
     side: 'F',
     from: { type: 'net', value: undefined },
     to: { type: 'net', value: undefined },
