@@ -340,6 +340,7 @@ outlines:
 
 pcbs:
   metasepia_v7:
+    template: kicad8
     outlines:
       main:
         outline: panel
@@ -374,6 +375,7 @@ pcbs:
           to: GND
           side: B
   metasepia_switchplate:
+    template: kicad8
     outlines:
       main:
         outline: switchplate
