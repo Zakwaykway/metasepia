@@ -3,6 +3,5 @@ fp-info-cache
 */*.json
 *.lck
 *.kicad_prl
-footprints/kicad/storage.pretty
 *.log 
 *.code-workspace
