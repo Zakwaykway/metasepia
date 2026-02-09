@@ -244,7 +244,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "metasepia_v7.kicad_pro",
+    "filename": "metasepia.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -266,12 +266,6 @@
         "via_diameter": 0.8,
         "via_drill": 0.4,
         "wire_width": 6
-      },
-      {
-        "name": "battery",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)"
       }
     ],
     "meta": {

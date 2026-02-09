@@ -1,0 +1,551 @@
+meta:
+  name: metasepia_v2
+  engine: 4.2.1
+  url: https://github.com/zakwaykway/metasepia
+  author: zakwaykway
+  
+units:
+  units:
+  kx: u # spacing
+  ky: kx
+  kcx: 18 # size of a keycap
+  kcy: kcx
+
+  $default_width: u # can't be a variable, as ergogen throws an error
+  $default_height: u
+
+  # ==================== parameterisation ====================
+  pinky_splay: 6 # 6
+  pinky_stagger: 0.675ky # .65 # pinky to ring
+  ring_splay: 3 # 3
+  ring_stagger: 0.25ky # .25 # ring to middle
+  index_stagger: -0.5ky # .5 # middle to index 
+  # ^ big number = low thumb, small number = wide thumb
+  inner_stagger: -0.35ky # .35 # index to inner
+  thumb_stagger: 0 # -0.2ky
+  tucky_splay: -0 # -8 # tucky thumb's angle relative to reachy
+  reachy_angle: -18 # -26, -20 # reachy thumb's angle relative to index col
+  thumb_x: 0.4kx # 1.1kx, 1.8kx 
+  thumb_y: -ky # -1.4ky 
+  #v8: 2kx 
+  #v8: -1.5ky
+  #ravine: 1.8kx
+  #ravine: -0.85ky
+  mcu_x: 17 # measurements; xiao: 17.8*21, pm: 17*33
+  mcu_y: 33
+
+  mcu_shift: 7.9 # 20 # mcu's location in Y, relative to the inner keys' corners
+  angle: 22  # 30 # between halves
+  thumb_curve: 0.65ky # y value to stretch/retract curve between hands
+  spacing: mcu_x + 1
+
+# ==================== object sizes ====================
+
+  reset_x: 8 # alps skqg + 6x6
+  reset_y: 6 #5.3
+  slider_x: 8 # skmc02
+  slider_y: 3.01
+  jst_x: 6.9
+  jst_y: 12.35 # including male
+
+points.zones:
+  matrix: 
+    anchor.shift: [90, -70]
+    rotate: -angle + pinky_splay + ring_splay
+    mirror:
+      ref: matrix_inner_top
+      shift: [kx/2, kx/2]
+      distance: spacing
+    key:
+      spread: kx
+      padding: ky
+      tags: switches # this will help place footprints correctly in pcbs and outlines
+    rows:
+      bottom:
+      home:
+      top:
+    columns.pinky:
+      rows.bottom: 
+        row_net: P0
+        column_net: P6
+        mirror:
+          row_net: P1
+          column_net: P10
+      rows.home:
+        row_net: P2
+        column_net: P6
+        mirror:
+          row_net: P3
+          column_net: P10
+      rows.top:
+        row_net: P0
+        column_net: P6
+        mirror:
+          row_net: P1
+          column_net: P10
+    columns.ring:
+      key.stagger: pinky_stagger
+      key.origin: [-kx/2, -ky/2]
+      key.splay: -pinky_splay
+      rows.bottom:
+        row_net: P4
+        column_net: P6
+        mirror:
+          row_net: P5
+          column_net: P9
+      rows.home:
+        row_net: P3
+        column_net: P6
+        mirror:
+          row_net: P2
+          column_net: P10
+      rows.top:
+        row_net: P1
+        column_net: P6
+        mirror:
+          row_net: P0
+          column_net: P10
+    columns.middle:
+      key.stagger: ring_stagger
+      key.origin: [-kx/2, -ky/2]
+      key.splay: -ring_splay
+      rows.bottom:
+        row_net: P5
+        column_net: P6
+        mirror:
+          row_net: P4
+          column_net: P9
+      rows.home:
+        row_net: P2
+        column_net: P7
+        mirror:
+          row_net: P3
+          column_net: P9
+      rows.top:
+        row_net: P0
+        column_net: P7
+        mirror:
+          row_net: P1
+          column_net: P9
+    columns.index:
+      key.stagger: index_stagger
+      rows.bottom:
+        row_net: P4
+        column_net: P7
+        mirror:
+          row_net: P5
+          column_net: P8
+      rows.home:
+        row_net: P3
+        column_net: P7
+        mirror:
+          row_net: P2
+          column_net: P9
+      rows.top:
+        row_net: P1
+        column_net: P7
+        mirror:
+          row_net: P0
+          column_net: P9
+    columns.inner:
+      key.stagger: inner_stagger
+      rows.bottom.skip: true
+      rows.home:
+        row_net: P2
+        column_net: P8
+        mirror:
+          row_net: P3
+          column_net: P8
+      rows.top:
+        row_net: P0
+        column_net: P8
+        mirror:
+          row_net: P1
+          column_net: P8
+
+  thumb: # thumbs
+    anchor:
+      ref: matrix_index_bottom
+      shift: [thumb_x, thumb_y]
+    mirror.$extends: points.zones.matrix.mirror
+    key:
+      $extends: points.zones.matrix.key
+    key.$extends: points.zones.matrix.key
+    columns:
+      tucky.key:
+        origin: [-kx/2, ky/2]
+        splay: tucky_splay
+        row_net: P5
+        column_net: P7
+        mirror:
+          row_net: P4
+          column_net: P10
+      reachy.key:
+        stagger: thumb_stagger
+        origin: [-kx/2, -ky/2]
+        splay: reachy_angle
+        row_net: P4
+        column_net: P8
+        mirror:
+          row_net: P5
+          column_net: P10
+    #  spread: -kx
+    #columns:
+    #  reachy.key:
+    #    splay: reachy_angle
+    #    row_net: P4
+    #    column_net: P8
+    #    mirror:
+    #      row_net: P5
+    #      column_net: P10
+    #  tucky.key:
+    #    stagger: tucky_stagger
+    #    origin: [kx/2, -ky/2-tucky_stagger]
+    #    splay: -reachy_angle #-tucky_splay
+    #    row_net: P5
+    #    column_net: P7
+    #    mirror:
+    #      row_net: P4
+    #      column_net: P10
+  mcu: # reference point for primarily the mcu
+    anchor:
+      aggregate.parts: 
+        - ref: matrix_inner_top
+          shift: [kx/2, ky/2]
+        - ref: mirror_matrix_inner_top
+          shift: [kx/2, ky/2]
+      shift: [0, -mcu_y/2 + mcu_shift]
+  side_encoders: # knobs :P
+    mirror.$extends: points.zones.matrix.mirror
+    key.tags: [encoder, switches]
+    anchor: 
+      #ref: thumb_reachy
+      #shift: [1, ky]
+      ref: matrix_inner_home
+      shift: [kx, -ky/2]
+  center_encoder:
+    key.tags: [encoder]
+    anchor:
+      ref: mcu
+      shift: [0, -mcu_y/2 -1 -ky/2]
+
+  ref_curve: # reference point for the bottom
+    anchor: 
+      aggregate.parts:
+        - ref: thumb_reachy
+        - ref: mirror_thumb_reachy
+      shift: [0, ky]
+  slider: # power switch
+    anchor:
+      aggregate.method: intersect
+      aggregate.parts:
+        - ref: matrix_index_top
+          shift: [0, ky/2]
+          rotate: 90
+        - ref: matrix_inner_top
+          shift: [0, 0]
+      orient: -angle + 6
+      shift: [0, -slider_y/2]
+  reset: # reset switch
+    anchor:
+      - ref: mcu
+        shift: [-12, -mcu_y/2 -1]
+    key.adjust:
+      shift: [0, -reset_y/2]
+  jst: # battery connector
+    anchor: 
+      - ref: mcu
+        shift: [0, 0]
+    key.adjust:
+      orient: 90
+      shift: [jst_x/2, -jst_y/2]
+
+outlines:
+  main: # main block
+    - what: path
+      segments: 
+        - type: line
+          points:
+            #- ref: matrix_inner_top
+            #  shift: [-kx/2, ky/2] 
+            - ref: matrix_index_top
+              shift: [kx/2, ky/2]
+            - ref: matrix_index_top
+              shift: [-kx/2, ky/2]
+            - ref: matrix_middle_top
+              shift: [kx/2, ky/2]
+            - ref: matrix_middle_top
+              shift: [-kx/2, ky/2]
+            - aggregate.method: intersect
+              aggregate.parts:
+                - ref: matrix_ring_top
+                  shift: [0, ky/2]
+                  rotate: 90
+                - ref: matrix_middle_top
+                  shift: [-kx/2, 0]
+            - ref: matrix_ring_top
+              shift: [-kx/2, ky/2]
+            - aggregate.method: intersect
+              aggregate.parts:
+                - ref: matrix_pinky_top
+                  shift: [0, ky/2]
+                  rotate: 90
+                - ref: matrix_ring_top
+                  shift: [-kx/2, 0]
+            - ref: matrix_pinky_top
+              shift: [-kx/2, ky/2]
+            - ref: matrix_pinky_bottom
+              shift: [-kx/2, -ky/2]
+            - ref: matrix_pinky_bottom
+              shift: [kx/2, -ky/2]
+            - ref: matrix_ring_bottom
+              shift: [-kx/2, -ky/2]
+        - type: bezier # SIDE CURVE LEFT
+          points:
+            - shift: [2.5kx, 0]
+            - ref:
+              - ref: thumb_tucky
+                shift: [-kx/2, -ky/2]
+              - ref: thumb_reachy
+                orient: thumb_tucky
+                affect: r
+              - shift: [0, ky]
+            - ref: thumb_tucky
+              shift: [-kx/2, -ky/2]
+            #- ref: thumb_tucky
+            #  shift: [-kx, -ky/2]
+            #- ref: thumb_tucky
+            #  shift: [-kx/2, -ky/2]
+        - type: line
+          points:
+            #- ref: thumb_tucky
+            #  shift: [kx/2, -ky/2]
+            - ref: thumb_reachy
+              shift: [kx/2, -ky/2]
+            - ref: thumb_reachy
+              shift: [kx/2, -ky/2]
+            - ref: thumb_reachy
+              shift: [kx/2, ky/2]
+            #- ref: thumb_reachy
+            #  shift: [0, ky/2]
+        - type: bezier # CENTER CURVE
+          points:
+            - shift: [0, thumb_curve]
+            - ref: mirror_thumb_reachy
+              shift: [kx/2, ky/2 + thumb_curve] # first values are those of next point
+            #- ref: mirror_thumb_reachy
+            #  shift: [0, ky/2]
+            - ref: mirror_thumb_reachy
+              shift: [kx/2, ky/2]
+        - type: line
+          points:
+            #- ref: mirror_thumb_reachy
+            #  shift: [kx/2, -ky/2]
+            - ref: mirror_thumb_reachy
+              shift: [kx/2, -ky/2]
+            #- ref: mirror_thumb_tucky
+            #  shift: [kx/2, -ky/2]
+            - ref: mirror_thumb_tucky
+              shift: [-kx/2, -ky/2]
+        - type: bezier # SIDE CURVES
+          points:
+            - ref: 
+              - ref: mirror_thumb_tucky
+                shift: [-kx/2, -ky/2]
+              - ref: mirror_thumb_reachy
+                orient: mirror_thumb_tucky
+                affect: r
+              shift: [0, ky]
+            - ref: mirror_matrix_ring_bottom
+              shift: [-kx/2 +2.5kx, -ky/2]
+            - ref: mirror_matrix_ring_bottom
+              shift: [-kx/2, -ky/2]
+        - type: line
+          points:
+            - ref: mirror_matrix_pinky_bottom
+              shift: [kx/2, -ky/2]
+            - ref: mirror_matrix_pinky_bottom
+              shift: [-kx/2, -ky/2]
+            - ref: mirror_matrix_pinky_top
+              shift: [-kx/2, ky/2]
+            - ref: mirror_matrix_pinky_top
+              shift: [-kx/2, ky/2]
+            - aggregate.method: intersect
+              aggregate.parts:
+                - ref: mirror_matrix_pinky_top
+                  shift: [0, ky/2]
+                  rotate: 90
+                - ref: mirror_matrix_ring_top
+                  shift: [-kx/2, 0]
+            - ref: mirror_matrix_ring_top
+              shift: [-kx/2, ky/2]
+            - aggregate.method: intersect
+              aggregate.parts:
+                - ref: mirror_matrix_ring_top
+                  shift: [0, ky/2]
+                  rotate: 90
+                - ref: mirror_matrix_middle_top
+                  shift: [-kx/2, 0]
+            - ref: mirror_matrix_middle_top
+              shift: [-kx/2, ky/2]
+            - ref: mirror_matrix_middle_top
+              shift: [kx/2, ky/2]
+            - ref: mirror_matrix_index_top
+              shift: [-kx/2, ky/2]
+            - ref: mirror_matrix_index_top
+              shift: [kx/2, ky/2]
+        - type: bezier # smooth, but tall
+          points:
+            - shift: [1kx, 0]
+            - ref: matrix_index_top
+              shift: [kx/2 + 1kx, ky/2]
+            - ref: matrix_index_top
+              shift: [kx/2, ky/2]
+        #- type: arc # steep arc
+        #  points:
+        #    - ref: mcu
+        #      shift: [0, mcu_y/2]
+        #    - ref: matrix_index_top
+        #      shift: [kx/2, ky/2]
+        #    - ref: mirror_matrix_inner_top # original, flat
+        #      shift: [-kx/2, ky/2] 
+        #    - ref: mirror_matrix_inner_top
+        #      shift: [kx/2, ky/2] 
+        #    - ref: matrix_inner_top
+        #      shift: [kx/2, ky/2] 
+
+  #_breakoff_col_holes: # edit these bigtime
+  #  # vert bot
+  #  - what: rectangle
+  #    size: [1.1, 11]
+  #    where: /_.*pinky_bottom/
+  #    adjust: 
+  #      shift: [0.5kx, 0.5ky -4]
+  #  # horiz bot
+  #  - what: rectangle
+  #    size: [15.5, 1]
+  #    where: /_.*pinky_bottom/
+  #    adjust: 
+  #      shift: [0, 0.5ky]
+#
+  #_panel: # subtract curves from blocks
+  #  - _center
+  #  - -_breakoff_col_holes
+#
+  #panel: # pcb outline
+  #  - name: main
+  #    fillet: 1.5
+  _keycaps:
+    - what: rectangle
+      where: [switches] # here it is! a tag
+      size: [kcx, kcy]
+    - what: circle
+      where: encoder
+      radius: 14.4/2 # measured from the knobs I have onhand
+      operation: stack
+  _cutouts:
+    - what: rectangle
+      where: [switches, encoder]
+      size: 14
+      corner: 0.5 # so they don't get filleted again down the line
+  _mcu:
+    - what: rectangle
+      where: mcu
+      size: [mcu_x, mcu_y]
+      #corner: 1.5 # only for xiao
+  _mcu_head:
+    - what: rectangle
+      size: [mcu_x+2, mcu_y+50]
+      where: mcu
+      adjust.shift: [0, -sy/2+mcu_y/2+5]
+    #- what: rectangle
+    #  where: mcu
+    #  adjust.shift: [0,-mcu_y/2]
+    #  size: [spacing+20,11]
+  _reset:
+    - what: rectangle
+      size: [reset_x, reset_y]
+      where: reset
+  _slider:
+    - what: rectangle
+      size: [slider_x, slider_y+1]
+      where: slider
+      adjust.shift: [0, -0.5] # compensation for center of zone vs center of footprint
+  _jst:
+    - what: rectangle
+      where: jst
+      size: [jst_x, jst_y]
+  _ref_curve:
+    - what: rectangle
+      size: [4, 2]
+      where: ref_curve
+      adjust.shift: [0, sy/2]
+  top_view:
+    - main
+    - ^_keycaps
+    - ^_mcu
+  debug:
+    - main
+    - ^_keycaps
+    - ^_cutouts
+    #- ^_mcu_head
+    - ^_mcu
+    - ^_reset
+    - ^_slider
+    - ^_jst
+    - ^_ref_curve
+  #switchplate:
+  #  #- panel
+  #  - -_switches
+  #  - name: _mcu_hole
+  #    operation: subtract
+  #    fillet: 1.75
+
+pcbs:
+  metasepia_v2:
+    template: kicad8
+    outlines:
+      main:
+        outline: main
+    footprints:
+      switches:
+        what: hs-mx-choc
+        where: switches
+        params:
+          left: "{{row_net}}"
+          right: "{{colrow}}"
+      encoder: 
+        what: ceoloide/rotary_encoder_ec11_ec12
+        where: [encoder]
+        adjust.rotate: 180
+        params:
+          include_plated_mounting_holes: false
+          #encoder_pads_position: 8.254
+          S1: "{{col_net}}"
+          S2: "{{row_net}}"
+          A: enc1
+          C: enc2
+      diodes:
+        what: ceoloide/diode_tht_sod123
+        where: [switches, encoder]
+        adjust.shift: [8, 0]
+        adjust.rotate: -90
+        params:
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+#        adjust:
+#          shift: [0, -4.5]
+#      mcu: # other components
+#        what: ceoloide/promicro
+#        where: mcu
+      #reset:
+      #  what: button-6x6
+      #  where: reset
+      #  params:
+      #    P1: RST
+      #    P2: GND
+#  metasepia_switchplate:
+#    template: kicad8
+#    outlines:
+#      main:
+#        outline: switchplate
