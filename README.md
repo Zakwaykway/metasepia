@@ -26,7 +26,7 @@ front | back
 
 ## Assembly
 ### Components
-- todo
+- BOM.md
 - If wireless isn't needed: BAT+ pogo, power slider, and battery aren't needed. Reset pogo & button are also optional, as there are other ways to trigger a reset.
 
 ### Build guide
