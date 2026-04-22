@@ -1,6 +1,5 @@
 meta:
-  name: metasepia_v2
-  engine: 4.2.1
+  name: metasepia2
   url: https://github.com/zakwaykway/metasepia
   author: zakwaykway
   
@@ -28,15 +27,15 @@ units:
   reachy_angle: -18 # -26, -20 # reachy thumb's angle relative to index col
   thumb_x: 0.4kx # 1.1kx, 1.8kx 
   thumb_y: -ky # -1.4ky 
-  #v8: 2kx 
+  #v8: 2xk 
   #v8: -1.5ky
   #ravine: 1.8kx
   #ravine: -0.85ky
   mcu_x: 17.78 # measurements; xiao: 17.8*21, pm: 17*33
   mcu_y: 33
 
-  mcu_shift: 7.9-2 # 20 # mcu's location in Y, relative to the inner keys' corners
-  angle: 22  # 30 # between halves
+  mcu_shift: 7.9 # 20 # mcu's location in Y, relative to the inner keys' corners
+  angle: 20  # 30 # between halves
   thumb_curve: 0.65ky # y value to stretch/retract curve between hands
   spacing: mcu_x + 2
 
@@ -50,6 +49,9 @@ units:
   jst_y: 12.35 # including male
   display_x: 12
   display_y: 38
+  cut_width: 1.01 # expand value. Only needed because [sx, sy] variables exclude expansion
+  mth_pcb: 5.5
+  mth_plate: 2.2
 
 points.zones:
   matrix: 
@@ -70,30 +72,30 @@ points.zones:
       home.mirror.row_net: R3
       top.row_net: R0
       top.mirror.row_net: R1
+    columns.pinky.rows.bottom.tags: [switches, bites]
     columns.pinky.key:
-      column_net: C0
-      mirror.column_net: C4
+      col_net: C0
+      mirror.col_net: C4
     columns.ring.key:
       stagger: pinky_stagger
       origin: [-kx/2, -ky/2]
       splay: -pinky_splay
-      column_net: C1
-      mirror.column_net: C3
+      col_net: C1
+      mirror.col_net: C3
     columns.middle.key:
       stagger: ring_stagger
       origin: [-kx/2, -ky/2]
       splay: -ring_splay
-      column_net: C2
+      col_net: C2
     columns.index.key:
       stagger: index_stagger
-      column_net: C3
-      mirror.column_net: C1
+      col_net: C3
+      mirror.col_net: C1
     columns.inner.rows.bottom.skip: true
     columns.inner.key:
       stagger: inner_stagger
-      column_net: C4
-      mirror.column_net: C0
-      
+      col_net: C4
+      mirror.col_net: C0
   thumb: # thumbs
     anchor:
       ref: matrix_index_bottom
@@ -105,63 +107,40 @@ points.zones:
         origin: [-kx/2, ky/2]
         splay: tucky_splay
         row_net: R4
-        column_net: C4
-        mirror.row_net: R3
-        mirror.column_net: C0
+        col_net: C4
+        mirror.row_net: R5
+        mirror.col_net: C0
       reachy.key:
         stagger: thumb_stagger
         origin: [-kx/2, -ky/2]
         splay: reachy_angle
-        row_net: R5
-        column_net: C3
-        mirror.column_net: C1
-    #  spread: -kx    # CONFIG FOR REVERSE PLACEMENT
-    #columns:
-    #  reachy.key:
-    #    splay: reachy_angle
-    #    row_net: P4
-    #    column_net: P8
-    #    mirror:
-    #      row_net: P5
-    #      column_net: P10
-    #  tucky.key:
-    #    stagger: tucky_stagger
-    #    origin: [kx/2, -ky/2-tucky_stagger]
-    #    splay: -reachy_angle #-tucky_splay
-    #    row_net: P5
-    #    column_net: P7
-    #    mirror:
-    #      row_net: P4
-    #      column_net: P10
-  mcu: # reference point for primarily the mcu
-    anchor:
-      aggregate.parts: 
-        - ref: matrix_inner_top
-          shift: [kx/2, ky/2]
-        - ref: mirror_matrix_inner_top
-          shift: [kx/2, ky/2]
-      shift: [0, -mcu_y/2 + mcu_shift]
-  display:
-    anchor:
-      ref: mcu
-      shift: [0, mcu_y/2-display_y/2] # precisely line up board & display edges
-  side_encoders: # knobs :P
+        row_net: R6
+        col_net: C4
+        mirror.col_net: C0
+  mcu.anchor: # reference point, primarily for the mcu
+    aggregate.parts: 
+      - ref: matrix_inner_top
+        shift: [kx/2, ky/2]
+      - ref: mirror_matrix_inner_top
+        shift: [kx/2, ky/2]
+    shift: [0, -mcu_y/2 + mcu_shift]
+  display.anchor:
+    ref: mcu
+    shift: [0, mcu_y/2-display_y/2] # precisely line up board & display edges
+  encoders: # knobs :P
     mirror.$extends: points.zones.matrix.mirror
-    key.tags: [encoder, switches]
     anchor: 
-      #ref: thumb_reachy
-      #shift: [1, ky]
       ref: matrix_inner_home
       shift: [kx, -ky/2-2]
-    key.col_net:
-    key.row_net:
+    key.tags: [encoder, switches]
+    key.col_net: C3
+    key.row_net: R6
+    key.mirror.col_net: C1
     key.a_net: enc1
     key.c_net: enc2
-    mirror.row_net:
-    mirror.col_net:
     key.mirror.a_net: enc3
     key.mirror.c_net: enc4
-  #center_encoder:
+  #center_encoder: # CENTER ENCODER
   #  key.tags: [encoder]
   #  anchor:
   #    ref: mcu
@@ -171,12 +150,45 @@ points.zones:
   #  key.a_net: enc1
   #  key.c_net: enc2
 
-  ref_curve: # reference point for the bottom
-    anchor: 
-      aggregate.parts:
-        - ref: thumb_reachy
-        - ref: mirror_thumb_reachy
-      shift: [0, ky-10.5]
+  ref_curve.anchor:  # reference point for the bottom
+    aggregate.parts: [thumb_reachy, mirror_thumb_reachy]
+    shift: [0, ky-10]
+  mth_1: # TOP PINKY
+    mirror.$extends: points.zones.matrix.mirror
+    anchor.aggregate.parts: [matrix_pinky_top, matrix_ring_top]
+    anchor.shift: [-1, 0]
+  mth_2: # BOT PINKY
+    mirror.$extends: points.zones.matrix.mirror
+    anchor.aggregate.parts: [matrix_pinky_home, matrix_ring_home]
+    anchor.shift: [1.05, -2.8]
+  mth_3: # TOP INDEX
+    mirror.$extends: points.zones.matrix.mirror
+    anchor.aggregate:
+      method: intersect
+      parts: 
+        - ref: matrix_index_top
+          shift: [(kco+mth_pcb)/2+2, 0]
+        - ref: matrix_inner_top
+          shift: [0, (kco+mth_pcb)/2+1]
+          rotate: 90
+  mth_4: # THUMB
+    mirror.$extends: points.zones.matrix.mirror
+    anchor.aggregate.parts: 
+      - ref: matrix_middle_bottom
+        shift: [-kx/2, -ky/2] 
+      - ref: thumb_tucky
+        shift: [kx/2, -ky/2] 
+  mth_5: # THUMB REACHY
+    mirror.$extends: points.zones.matrix.mirror
+    anchor.aggregate.method: intersect
+    anchor.aggregate.parts:
+      - ref: encoders
+        shift: [0, -ky/2-2]
+        rotate: 90
+      - ref: thumb_reachy
+        shift: [0, 0]
+
+
   slider: # power switch
     anchor:
       aggregate.method: intersect
@@ -185,31 +197,28 @@ points.zones:
           shift: [0, ky/2]
           rotate: 90
         - ref: matrix_inner_top
-          shift: [0, 0]
-      orient: -angle + 6
-      shift: [0, -slider_y/2+0.2]
+      orient: -angle + 7
+      shift: [0, -slider_y/2+0.25]
   reset: # reset switch
     anchor:
-      ref: ref_curve
-      #ref: thumb_reachy
-      #shift: [kx/2-reset_x/2, ky/2]
-    key.adjust:
-      shift: [0, reset_y/2]
+      - ref.aggregate.parts:
+        - ref: matrix_inner_home
+        - ref.aggregate.parts: [thumb_tucky, thumb_reachy]
+      - ref: matrix_inner_home
+        affect: r
   jst: # battery connector
-    anchor: 
-      - ref: mcu
-        shift: [0, 0]
-    key.adjust:
-      orient: 90
-      shift: [jst_x/2, -jst_y/2]
-
+    mirror.$extends: points.zones.matrix.mirror
+    key.asym: right
+    anchor:
+      - ref: matrix_inner_home
+        shift: [kco/2+1, -kco/2-3.5]
+      - shift: [-jst_x/2, -jst_y/2]
+        rotate: 180
   mousebites: &mb1 # outer edge
     key.spread: 0.64
     key.padding: -0.64
     key.tags: mousebites
     key.hole_size: 0.38
-    key.width: 0.38
-    key.height: 0.38
     mirror.$extends: points.zones.matrix.mirror
     anchor:
       ref: matrix_pinky_bottom
@@ -242,41 +251,49 @@ outlines:
   _mcu:
     - what: rectangle
       size: [mcu_x, mcu_y]
-      where: mcu
+      where: /mcu/
         #corner: 1.5 # only for xiao
   _reset:
     - what: rectangle
       size: [reset_x, reset_y]
-      where: reset
+      where: /reset/
   _slider:
     - what: rectangle
       size: [slider_x, slider_y+1]
-      where: slider
+      where: /slider/
       adjust.shift: [0, -0.5] # compensation for center of zone vs center of footprint
   _jst:
     - what: rectangle
-      where: jst
+      where: /jst/
+      #adjust.shift: [0, 4.35]
       size: [jst_x, jst_y]
   _display:
     - what: rectangle
       size: [display_x, display_y]
       #18.3+19.7]
-      where: display
+      where: /display/
+  _mth_pcb:
+    - what: circle
+      where: /mth/
+      radius: mth_pcb/2
+  _mth_plate:
+    - what: circle
+      where: /mth/
+      radius: mth_plate/2
   # ================= intermediate =================
   _mousebite_cuts: 
     - what: rectangle # lateral
-      size: [12.6, 0]
-      where: /pinky_bottom/
-      adjust: 
-        shift: [0, -0.5+ky/2]
+      size: [12.6, cut_width]
+      where: [bites]
+      adjust.shift: [0, -cut_width/2+ky/2]
+      corner: 0.3
+      #expand: cut_width/2.5
     - what: rectangle # vertical
-      size: [0.001, ky-pinky_stagger-3.2]
-      where: /pinky_bottom/
-      adjust: 
-        shift: [-0.5+kx/2, ky/2-3.2-sy/2]
-      expand: 0.5
-      #corner: 0.5
-  main: # main block
+      size: [cut_width, ky-pinky_stagger-3.2+cut_width/2]
+      where: [bites] # fix right side not being cut
+      adjust.shift: [-cut_width/2+kx/2+0.3, ky/2-3.2-sy/2]
+      corner: 0.3
+  _main: # main block
     - what: path
       segments: 
         - type: line
@@ -429,8 +446,12 @@ outlines:
         #    - ref: matrix_inner_top
         #      shift: [kx/2, ky/2] 
   body:
-    - main
-    - -_mousebite_cuts
+    - _main
+    - name: _mousebite_cuts
+      operation: subtract
+      fillet: 1.5
+    - name: body
+      fillet: 0.4
   _center_cutout:
     - body
     - what: polygon
@@ -478,7 +499,7 @@ outlines:
       where: [encoder]
       adjust.shift: [0, sy/2-7]
       corner: 0.5 # so they don't get filleted again down the line
-  _ref_curve:
+  _ref_curve: # reference point
     - what: rectangle
       size: [4, 2]
       where: ref_curve
@@ -489,49 +510,69 @@ outlines:
     - _mcu
     - ^_slider
     - ^_reset
-    #- ^_jst
-    - ^_display
+    - ^_jst
+    - _display
   _component_cutouts:
-    - name: _components
+    - name: _reset
+      expand: 1.5>
+    - ^_mcu
+    - ^_jst
+    - name: _display
       expand: 1>
-  components_view:
-    - _components
+      fillet: 2
+  pcb_view:
     - ^body
+    - ^_components
+    - ^_mth_pcb
+    - what: rectangle
+      where: [switches]
+      size: kco
+      operation: stack
   top_view:
     - body
+    - ^_component_cutouts
+    - ^_components
     - ^_keycaps
     - ^_mcu
   debug:
     - body
+    - ^_mth_pcb
     - ^_keycaps
-    #- ^_cutouts_choc
     - ^_center_cutout
     - ^_components
     - ^_ref_curve
   _plate_base:
-    - body
-    - -_component_cutouts
-    - -_center_cutout
-  choc_plate: 
-    - _plate_base
-    - -_cutouts_choc
-  mx_plate: 
-    - _plate_base
+    - name: body
+      #fillet: 0.4
+    - name: _component_cutouts
+      operation: subtract
+    - name: _center_cutout
+      operation: subtract
+      fillet: 1
+  _mx_plate:
+    - name: _plate_base
     - name: _cutouts_mx
       operation: subtract
-      fillet: 0.75
+  mx_plate:
+    - _mx_plate
+    - -_mth_plate
+  _choc_plate: 
+    - _plate_base
+    - -_cutouts_choc
+  choc_plate: 
+    - _choc_plate
+    - -_mth_plate
 
 pcbs:
-  metasepia_v2:
+  metasepia2:
     template: kicad8
-    outlines:
-      main:
-        outline: body
+    outlines.main.outline: body
     footprints:
       switches:
-        what: hs-mx-choc
+        what: hs-mx
         where: switches
         params:
+          #side: B
           left: "{{row_net}}"
           right: "{{colrow}}"
       encoder: 
@@ -542,7 +583,7 @@ pcbs:
         params:
           include_plated_mounting_holes: false
           encoder_pads_position: 8.254
-          S1: "{{col_net}}"
+          S1: "{{colrow}}"
           S2: "{{row_net}}"
           A: "{{a_net}}"
           C: "{{c_net}}"
@@ -555,48 +596,111 @@ pcbs:
         params:
           side: B
           from: "{{colrow}}"
-          to: "{{column_net}}"
+          to: "{{col_net}}"
       mousebites:
         what: ceoloide/mounting_hole_npth
         where: [mousebites]
         params:
           hole_size: "{{hole_size}}"
           hole_drill: "{{hole_size}}"
+      mths:
+        what: ceoloide/mounting_hole_npth
+        where: /mth/
+        params:
+          hole_size: mth_pcb
+          hole_drill: mth_pcb
       mcu:
-        what: ceoloide/mcu_nice_nano
+        what: mcu_nice_nano
         where: mcu
         params:
-          #reversible: true
+          reversible: true
+          only_required_jumpers: true
+          P1: R0
           P0: R1
-          P1: R2
-          P4: R3
           P2: SDA
           P3: SCL
+          P4: R2
+          P5: R3
+          P6: R4
+          P7: R5
+          P8: enc1
+          P9: enc2
+
+          P21: C0
+          P20: C1
+          P19: C2
+          P18: C3
+          P15: C4
+          P14: R6
+          P16: enc3
+          P10: enc4
       display:
         what: ceoloide/display_ssd1306
-        where: display
+        where: /display/
         adjust.shift: [0, -0.69]
           #ref: mcu
           #shift: [0, mcu_y/2+16.7-38+1.5] # precisely line up the front edge
           #shift: [0, mcu_y/2-19.7]
           #shift: [0, -2]
-      reset:
+      reset6x6:
         what: button-6x6
-        where: reset
+        where: /reset/
         params:
           P1: RST
           P2: GND
+      resetalps:
+        what: button
+        where: /reset/
+        params:
+          from: RST
+          to: GND
       slider:
         what: ceoloide/power_switch_smd_side
-        where: slider
+        where: /slider/
         adjust.rotate: 90
         params:
           side: B
-          from: battery
-          to: BAT_POS
+          from: RAW
+          to: battery
+      jst:
+        what: ceoloide/battery_connector_jst_ph_2
+        where: /jst/
+        adjust.shift: [0, 4.35]
+        params:
+          reversible: false
+          BAT_P: battery
+          BAT_N: GND
   mx_plate:
     template: kicad8
-    outlines.main.outline: mx_plate
+    outlines.main.outline: _mx_plate
+    footprints:
+      mousebites:
+        what: ceoloide/mounting_hole_npth
+        where: [mousebites]
+        params:
+          hole_size: "{{hole_size}}"
+          hole_drill: "{{hole_size}}"
+      mths:
+        what: ceoloide/mounting_hole_npth
+        where: /mth/
+        params:
+          #hole_size: "{{hole_size}}"
+          #hole_drill: "{{hole_size}}"
+
   choc_plate:
     template: kicad8
-    outlines.main.outline: choc_plate
+    outlines.main.outline: _choc_plate
+    footprints:
+      mousebites:
+        what: ceoloide/mounting_hole_npth
+        where: [mousebites]
+        params:
+          hole_size: "{{hole_size}}"
+          hole_drill: "{{hole_size}}"
+      mths:
+        what: ceoloide/mounting_hole_npth
+        where: /mth/
+        params:
+          #hole_size: "{{hole_size}}"
+          #hole_drill: "{{hole_size}}"
+ 
